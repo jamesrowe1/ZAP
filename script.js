@@ -62,19 +62,18 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 
-
 //cheapshark stores
 var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://cheapshark-game-deals.p.rapidapi.com/stores",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-		"x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1"
-	}
-}
+  async: true,
+  crossDomain: true,
+  url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+    "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+  },
+};
 
 $.ajax(settings).done(function (response) {
-	console.log(response);
+  console.log(response);
 });
