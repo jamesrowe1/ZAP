@@ -1,7 +1,7 @@
 // jQuery
 //DOM Elements
 var searchBar = $("#search");
-
+var bigContainer = $("#bigContainer")
 $(document).ready(function () {
   $(".sidenav").sidenav();
 });
@@ -13,48 +13,13 @@ $(document).ready(function () {
 //searchbar
 // ==========================================================
 // DEPENDENCIES
-var getPic = document.querySelector("img");
-var seacrhInput = document.querySelector("#search");
-// add event listener
-getPic.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(getPic);
-});
-// this function populates card with image from user search
-function getPic() {}
-var name = "";
-var myArray = [];
-
-function that() {
-  name = document.getElementById("txtbox_gamename").value; // Getting the typed value
-  myArray.push(name); // storing into an array
-  console.log(myArray);
-}
-
-function search() {
-  var z = prompt("Search Id Number");
-  for (i in myArray) {
-    if (z == myArray[i]) {
-      document.getElementById("batman").innerHTML = z; //Looping the array and checking if the item exist
-      break;
-    } else {
-      document.getElementById("batman").innerHTML = "Does not exist";
-    }
-  }
-}
-//cards of image from game plus info
-var picDiv = $("<div>");
-var p = $("<p>");
-var gameImage = $("<img>");
-// gameImage.attr("src", results[i].images.fixed_height.url);
-picDiv.append(p);
-picDiv.append(gameImageUrl);
-// $("#").prepend(picDiv);
+// 
 
 // ==================================================
 //pull categories of data
 //save button
 var myGame = document.querySelectorAll(".save");
+
 function saveGame() {
   // get most recent submission
   //unsure of gametitle
@@ -68,6 +33,7 @@ function saveGame() {
 
 //share button
 var myShare = document.querySelectorAll(".share");
+
 function shareGame() {
   // get most recent submission
   //unsure of gametitle
@@ -131,8 +97,7 @@ searchBar.on("keypress", function (event) {
     var settings = {
       async: true,
       crossDomain: true,
-      url:
-        "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
+      url: "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
         gameCheap +
         "&exact=0",
       method: "GET",
@@ -151,14 +116,12 @@ searchBar.on("keypress", function (event) {
       var settings = {
         async: true,
         crossDomain: true,
-        url:
-          "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
+        url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
           gameCheapID,
         method: "GET",
         headers: {
           "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-          "x-rapidapi-key":
-            "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+          "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
         },
       };
 
@@ -177,8 +140,7 @@ searchBar.on("keypress", function (event) {
           method: "GET",
           headers: {
             "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-            "x-rapidapi-key":
-              "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+            "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
           },
         };
 
@@ -187,8 +149,26 @@ searchBar.on("keypress", function (event) {
           console.log(cheapStoresResponse);
           //cause store id is +1 of array value...
           console.log(cheapStoresResponse[storeCheapID - 1].storeName);
+          addCard()
+
+
         });
       });
     });
   }
 });
+
+function addCard() {
+  var cardDiv = $("<div>");
+  cardDiv.addClass("card");
+  var cardImgDiv = $("<div>");
+  cardImgDiv.addClass("card-image");
+  var gameImg = $("<img>");
+  var cardTitle = $("<span>");
+  cardTitle.addClass("card-title");
+  var cardDescription = $("<div>");
+  cardDescription.addClass("card-content");
+  cardImgDiv.attr("src", gameImageUrl);
+  cardDiv.append(cardImgDiv);
+  bigContainer.append(cardDiv)
+}
