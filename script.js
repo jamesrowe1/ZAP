@@ -11,14 +11,18 @@ $(document).ready(function () {
 //searchbar
 // ==========================================================
 //cards of image from game plus info
-            var animalDiv = $("<div>");
+var gameName = "World of Warcraft";
+var gameDescription = "we are awesome coders";
+var gameImageUrl =
+  "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
+            var picDiv = $("<div>");
             var p = $("<p>");
             p.text(results[i].rating);
-            var animalImage = $("<img>");
-            animalImage.attr("src", results[i].images.fixed_height.url);
-            animalDiv.append(p);
-            animalDiv.append(animalImage);
-            $("#gifs-appear-here").prepend(animalDiv);
+            var gameImage = $("<img>");
+            gameImage.attr("src", results[i].images.fixed_height.url);
+            picDiv.append(p);
+            picDiv.append(gameImage);
+            $("#gifs-appear-here").prepend(picDiv);
            
           }
 // ==================================================
