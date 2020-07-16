@@ -9,7 +9,26 @@ $(document).ready(function () {
 // if user click on the logo - button
 // button returns user to main page
 //searchbar
-
+var name = ""
+var myArray = [];
+    
+     function that(){
+        name = document.getElementById('txtbox_gamename').value; // Getting the typed value 
+        myArray.push(name); // storing into an array
+        console.log(myArray);
+      }
+    
+        function search() {
+        var z = prompt("Search Id Number");
+      	for(i in myArray){
+      	  if(z == myArray[i]){
+       	    document.getElementById('batman').innerHTML = z; //Looping the array and checking if the item exist
+       	    break;
+       	}else{
+       	    document.getElementById('batman').innerHTML = "Does not exist";
+       	  }
+      	}
+    }
 //cards of image from game plus info
 //pull categories of data
 //save button
