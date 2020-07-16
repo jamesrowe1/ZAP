@@ -15,16 +15,17 @@ var gameName = "World of Warcraft";
 var gameDescription = "we are awesome coders";
 var gameImageUrl =
   "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
-            var picDiv = $("<div>");
-            var p = $("<p>");
-            p.text(results[i].rating);
-            var gameImage = $("<img>");
-            gameImage.attr("src", results[i].images.fixed_height.url);
-            picDiv.append(p);
-            picDiv.append(gameImage);
-            $("#gifs-appear-here").prepend(picDiv);
-           
-          }
+var esrb;
+var picDiv = $("<div>");
+console.log(gameImageUrl);
+var p = $("<p>");
+// p.text(results[i].rating);
+var gameImage = $("<img>");
+// gameImage.attr("src", results[i].images.fixed_height.url);
+picDiv.append(p);
+picDiv.append(gameImageUrl);
+// $("#").prepend(picDiv);
+
 // ==================================================
 //pull categories of data
 //save button
