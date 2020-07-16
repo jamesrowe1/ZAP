@@ -13,6 +13,17 @@ $(document).ready(function () {
 //cards of image from game plus info
 //pull categories of data
 //save button
+var myGame = document.querySelectorAll(".save");
+function saveGame() {
+  // get most recent submission
+  //unsure of gametitle
+  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
+
+  myGame.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("myGame");
+  });
+}
 //share button
 
 //     button
@@ -62,19 +73,18 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 
-
 //cheapshark stores
 var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://cheapshark-game-deals.p.rapidapi.com/stores",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-		"x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1"
-	}
-}
+  async: true,
+  crossDomain: true,
+  url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+    "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+  },
+};
 
 $.ajax(settings).done(function (response) {
-	console.log(response);
+  console.log(response);
 });
