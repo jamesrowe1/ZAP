@@ -11,12 +11,13 @@ $(document).ready(function () {
 //searchbar
 // ==========================================================
 //cards of image from game plus info
+var picDiv = $("<div>");
+var p = $("<p>");
 var gameName = "World of Warcraft";
-var gameDescription = "we are awesome coders";
+// var gameDescription = "we are awesome coders";
 var gameImageUrl =
   "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
 var esrb;
-var picDiv = $("<div>");
 console.log(gameImageUrl);
 var p = $("<p>");
 // p.text(results[i].rating);
