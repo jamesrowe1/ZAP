@@ -13,6 +13,17 @@ $(document).ready(function () {
 //cards of image from game plus info
 //pull categories of data
 //save button
+var myGame = document.querySelectorAll(".save");
+function saveGame() {
+  // get most recent submission
+  //unsure of gametitle
+  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
+
+  myGame.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("myGame");
+  });
+}
 //share button
 
 //     button
