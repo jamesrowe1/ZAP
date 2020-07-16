@@ -89,6 +89,7 @@ searchBar.on("keypress", function (event) {
       gameDescription = rawgResponse.description;
       //setting the image
       gameImageUrl = rawgResponse.background_image;
+      gameName = rawgResponse.name;
       console.log(esrb);
       console.log(gameDescription);
       console.log(gameImageUrl);
@@ -182,22 +183,22 @@ function addCard() {
 
   //create esrb rating div
   var cardESRB = $("<div>");
-  cardESRB.addClass("card-esrb");
+  cardESRB.addClass("card-content card-esrb");
   cardESRB.text("ESRB Rating: " + esrb);
 
   //create card description
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  cardDescription.text(gameDescription);
+  cardDescription.html(gameDescription);
 
   //create price div
   var cardPrice = $("<div>");
-  cardPrice.addClass("card-price");
+  cardPrice.addClass("card-content card-price");
   cardPrice.text("Price: $" + price);
 
   //create store div
   var cardStore = $("<div>");
-  cardStore.addClass("card-store");
+  cardStore.addClass("card-content card-store");
   cardStore.text("Available at " + storeName);
 
   //append everything
