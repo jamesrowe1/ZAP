@@ -25,8 +25,18 @@ function saveGame() {
   });
 }
 //share button
+var myShare = document.querySelectorAll(".share");
+function shareGame() {
+  // get most recent submission
+  //unsure of gametitle
 
-//     button
+  //   remember to tak out the alert!!!
+  myShare.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("myShare");
+    alert("Done and waiting for James ajax stuff");
+  });
+}
 //     on click
 //     pull from API
 //     pulls up lists according to User input
