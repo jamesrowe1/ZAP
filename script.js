@@ -10,6 +10,16 @@ $(document).ready(function () {
 // button returns user to main page
 //searchbar
 // ==========================================================
+// DEPENDENCIES
+var getPic = document.querySelector("img");
+var seacrhInput = document.querySelector("#search");
+// add event listener
+getPic.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log(getPic);
+})
+// this function populates card with image from user search
+function getPic()
 //cards of image from game plus info
 var picDiv = $("<div>");
 var p = $("<p>");
@@ -19,7 +29,6 @@ var gameImageUrl =
   "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
 var esrb;
 console.log(gameImageUrl);
-var p = $("<p>");
 // p.text(results[i].rating);
 var gameImage = $("<img>");
 // gameImage.attr("src", results[i].images.fixed_height.url);
