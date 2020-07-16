@@ -177,7 +177,7 @@ function addCard() {
 
   //create cardTitle
   var cardTitle = $("<span>");
-  cardTitle.addClass("card-title text-red");
+  cardTitle.addClass("card-title red-text");
   cardTitle.text(gameName);
 
   //create esrb rating div
