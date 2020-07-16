@@ -42,18 +42,32 @@ function shareGame() {
 //     pulls up lists according to User input
 
 //get specific details from rawg api
-var gameName = "World of Warcraft";
-var gameRawg = game.replace(/\s+/g, "-").toLowerCase();
-var gameCheap = game.replace(/\s/g);
+var gameName = "LEGO Batman";
+var esrb = "";
+var gameRawg = gameName.replace(/\s+/g, "-").toLowerCase();
+var gameCheap = gameName.replace(/\s/g, "").toUpperCase();
 var price = "$19.99";
+var storeCheapID;
 var gameDescription = "we are awesome coders";
 var gameImageUrl =
   "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
+var gameCheapID;
+
+//gets details from rawgAPI
 $.ajax({
-  url: "https://api.rawg.io/api/games/world-of-warcraft",
+  url: "https://api.rawg.io/api/games/" + gameRawg,
   method: "GET",
-}).then(function (response) {
-  console.log(response);
+}).then(function (rawgResponse) {
+  console.log(rawgResponse);
+  //esrb rating
+  esrb = rawgResponse.esrb_rating.name;
+  //this has <p> in it. let's try to use it to make the card clean
+  var gameDescription = rawgResponse.description;
+  //setting the image
+  gameImageUrl = rawgResponse.background_image;
+  console.log(esrb);
+  console.log(gameDescription);
+  console.log(gameImageUrl);
 });
 
 //get array of games closely matching from cheapshark api
@@ -61,7 +75,9 @@ var settings = {
   async: true,
   crossDomain: true,
   url:
-    "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=worldofwarcraft&exact=0",
+    "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
+    gameName +
+    "&exact=1",
   method: "GET",
   headers: {
     "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
@@ -69,38 +85,47 @@ var settings = {
   },
 };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+$.ajax(settings).done(function (cheapResponseArr) {
+  console.log(cheapResponseArr);
+  gameCheapID = cheapResponseArr[0].gameID;
 
-//get specific info about 1 game (wow) cheapshark
-var settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=217145",
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-    "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
-  },
-};
+  //nested call to cheap as details are needed from above
+  //get specific info about 1 game (wow) cheapshark
+  var settings = {
+    async: true,
+    crossDomain: true,
+    url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=" + gameCheapID,
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+      "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+    },
+  };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+  $.ajax(settings).done(function (cheapResponseSingle) {
+    console.log(cheapResponseSingle);
+    price = cheapResponseSingle.deals[0].price;
+    console.log(price);
+    storeCheapID = cheapResponseSingle.deals[0].storeID;
 
-//cheapshark stores
-var settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-    "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
-  },
-};
+    //nested call to cheap as storeid needed from above
+    //cheapshark stores
+    var settings = {
+      async: true,
+      crossDomain: true,
+      url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+        "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+      },
+    };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
+    $.ajax(settings).done(function (cheapStoresResponse) {
+      console.log(storeCheapID);
+      console.log(cheapStoresResponse);
+      //cause store id is +1 of array value...
+      console.log(cheapStoresResponse[storeCheapID - 1].storeName);
+    });
+  });
 });
