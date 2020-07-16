@@ -9,27 +9,54 @@ $(document).ready(function () {
 // if user click on the logo - button
 // button returns user to main page
 //searchbar
-var name = ""
+// ==========================================================
+// DEPENDENCIES
+var getPic = document.querySelector("img");
+var seacrhInput = document.querySelector("#search");
+// add event listener
+getPic.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(getPic);
+});
+// this function populates card with image from user search
+function getPic() {}
+var name = "";
 var myArray = [];
-    
-     function that(){
-        name = document.getElementById('txtbox_gamename').value; // Getting the typed value 
-        myArray.push(name); // storing into an array
-        console.log(myArray);
-      }
-    
-        function search() {
-        var z = prompt("Search Id Number");
-      	for(i in myArray){
-      	  if(z == myArray[i]){
-       	    document.getElementById('batman').innerHTML = z; //Looping the array and checking if the item exist
-       	    break;
-       	}else{
-       	    document.getElementById('batman').innerHTML = "Does not exist";
-       	  }
-      	}
+
+function that() {
+  name = document.getElementById("txtbox_gamename").value; // Getting the typed value
+  myArray.push(name); // storing into an array
+  console.log(myArray);
+}
+
+function search() {
+  var z = prompt("Search Id Number");
+  for (i in myArray) {
+    if (z == myArray[i]) {
+      document.getElementById("batman").innerHTML = z; //Looping the array and checking if the item exist
+      break;
+    } else {
+      document.getElementById("batman").innerHTML = "Does not exist";
     }
+  }
+}
 //cards of image from game plus info
+var picDiv = $("<div>");
+var p = $("<p>");
+var gameName = "World of Warcraft";
+// var gameDescription = "we are awesome coders";
+var gameImageUrl =
+  "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
+var esrb;
+console.log(gameImageUrl);
+// p.text(results[i].rating);
+var gameImage = $("<img>");
+// gameImage.attr("src", results[i].images.fixed_height.url);
+picDiv.append(p);
+picDiv.append(gameImageUrl);
+// $("#").prepend(picDiv);
+
+// ==================================================
 //pull categories of data
 //save button
 var myGame = document.querySelectorAll(".save");
@@ -43,6 +70,7 @@ function saveGame() {
     console.log("myGame");
   });
 }
+
 //share button
 var myShare = document.querySelectorAll(".share");
 function shareGame() {
