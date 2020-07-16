@@ -2,3 +2,17 @@
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
+.logosize {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#logo {
+  width: 200px;
+  height: 150px;
+}
+>>>>>>> 96e72140ffcffd267fc18f5cf5f0f0af6015b298
