@@ -165,19 +165,48 @@ searchBar.on("keypress", function (event) {
 });
 
 function addCard() {
-  console.log("hi");
-  console.log(gameImageUrl);
+  //create card div
   var cardDiv = $("<div>");
   cardDiv.addClass("card");
+
+  //create card image div
   var cardImgDiv = $("<div>");
   cardImgDiv.addClass("card-image");
   var gameImg = $("<img>");
+  gameImg.attr("src", gameImageUrl);
+
+  //create cardTitle
   var cardTitle = $("<span>");
-  cardTitle.addClass("card-title");
+  cardTitle.addClass("card-title text-red");
+  cardTitle.text(gameName);
+
+  //create esrb rating div
+  var cardESRB = $("<div>");
+  cardESRB.addClass("card-esrb");
+  cardESRB.text("ESRB Rating: " + esrb);
+
+  //create card description
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  gameImg.attr("src", gameImageUrl);
+  cardDescription.text(gameDescription);
+
+  //create price div
+  var cardPrice = $("<div>");
+  cardPrice.addClass("card-price");
+  cardPrice.text("Price: $" + price);
+
+  //create store div
+  var cardStore = $("<div>");
+  cardStore.addClass("card-store");
+  cardStore.text("Available at " + storeName);
+
+  //append everything
   cardImgDiv.append(gameImg);
+  cardImgDiv.append(cardTitle);
   cardDiv.append(cardImgDiv);
+  cardDiv.append(cardESRB);
+  cardDiv.append(cardDescription);
+  cardDiv.append(cardPrice);
+  cardDiv.append(cardStore);
   bigContainer.prepend(cardDiv);
 }
