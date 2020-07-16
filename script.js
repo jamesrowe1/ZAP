@@ -9,8 +9,19 @@ $(document).ready(function () {
 // if user click on the logo - button
 // button returns user to main page
 //searchbar
-
+// ==========================================================
 //cards of image from game plus info
+            var animalDiv = $("<div>");
+            var p = $("<p>");
+            p.text(results[i].rating);
+            var animalImage = $("<img>");
+            animalImage.attr("src", results[i].images.fixed_height.url);
+            animalDiv.append(p);
+            animalDiv.append(animalImage);
+            $("#gifs-appear-here").prepend(animalDiv);
+           
+          }
+// ==================================================
 //pull categories of data
 //save button
 var myGame = document.querySelectorAll(".save");
@@ -24,6 +35,7 @@ function saveGame() {
     console.log("myGame");
   });
 }
+
 //share button
 var myShare = document.querySelectorAll(".share");
 function shareGame() {
