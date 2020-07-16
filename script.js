@@ -42,10 +42,11 @@ function shareGame() {
 //     pulls up lists according to User input
 
 //get specific details from rawg api
-var gameName = "LEGO Batman";
+var gameName = "lego Batman";
 var esrb = "";
-var gameRawg = gameName.replace(/\s+/g, "-").toLowerCase();
-var gameCheap = gameName.replace(/\s/g, "").toUpperCase();
+var gameRawg = gameName.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+gameRawg = gameRawg.replace(/-{2,}/g, "-");
+var gameCheap = gameName.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
 var price = "$19.99";
 var storeCheapID;
 var gameDescription = "we are awesome coders";
@@ -60,7 +61,11 @@ $.ajax({
 }).then(function (rawgResponse) {
   console.log(rawgResponse);
   //esrb rating
-  esrb = rawgResponse.esrb_rating.name;
+  if (rawgResponse.esrb_rating === null) {
+    esrb = "No ESRB Rating";
+  } else {
+    esrb = rawgResponse.esrb_rating.name;
+  }
   //this has <p> in it. let's try to use it to make the card clean
   var gameDescription = rawgResponse.description;
   //setting the image
@@ -77,7 +82,7 @@ var settings = {
   url:
     "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
     gameName +
-    "&exact=1",
+    "&exact=0",
   method: "GET",
   headers: {
     "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
