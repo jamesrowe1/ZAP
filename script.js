@@ -15,11 +15,11 @@ var getPic = document.querySelector("img");
 var seacrhInput = document.querySelector("#search");
 // add event listener
 getPic.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log(getPic);
-})
+  event.preventDefault();
+  console.log(getPic);
+});
 // this function populates card with image from user search
-function getPic()
+function getPic() {}
 //cards of image from game plus info
 var picDiv = $("<div>");
 var p = $("<p>");
