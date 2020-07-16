@@ -43,13 +43,6 @@ function search() {
 //cards of image from game plus info
 var picDiv = $("<div>");
 var p = $("<p>");
-var gameName = "World of Warcraft";
-// var gameDescription = "we are awesome coders";
-var gameImageUrl =
-  "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
-var esrb;
-console.log(gameImageUrl);
-// p.text(results[i].rating);
 var gameImage = $("<img>");
 // gameImage.attr("src", results[i].images.fixed_height.url);
 picDiv.append(p);
@@ -90,7 +83,8 @@ function shareGame() {
 
 //get specific details from rawg api
 var gameName = "lego Batman";
-var esrb = "";
+var esrb;
+// p.text(results[i].rating);
 
 //Rawg API has weird naming conventions
 var gameRawg = gameName.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
@@ -100,9 +94,9 @@ var gameCheap = gameName.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
 var price = "$19.99";
 var storeCheapID;
 var gameDescription = "we are awesome coders";
-var gameImageUrl =
-  "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
+var gameImageUrl;
 var gameCheapID;
+var esrb = "";
 
 //gets details from rawgAPI
 $.ajax({
@@ -117,7 +111,7 @@ $.ajax({
     esrb = rawgResponse.esrb_rating.name;
   }
   //this has <p> in it. let's try to use it to make the card clean
-  var gameDescription = rawgResponse.description;
+  gameDescription = rawgResponse.description;
   //setting the image
   gameImageUrl = rawgResponse.background_image;
   console.log(esrb);
@@ -131,7 +125,7 @@ var settings = {
   crossDomain: true,
   url:
     "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
-    gameName +
+    gameCheap +
     "&exact=0",
   method: "GET",
   headers: {
