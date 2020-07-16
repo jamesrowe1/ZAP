@@ -179,5 +179,5 @@ function addCard() {
   gameImg.attr("src", gameImageUrl);
   cardImgDiv.append(gameImg);
   cardDiv.append(cardImgDiv);
-  bigContainer.append(cardDiv);
+  bigContainer.prepend(cardDiv);
 }
