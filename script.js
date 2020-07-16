@@ -1,7 +1,7 @@
 // jQuery
 //DOM Elements
 var searchBar = $("#search");
-var bigContainer = $("#bigContainer")
+var bigContainer = $("#bigContainer");
 $(document).ready(function () {
   $(".sidenav").sidenav();
 });
@@ -13,7 +13,7 @@ $(document).ready(function () {
 //searchbar
 // ==========================================================
 // DEPENDENCIES
-// 
+//
 
 // ==================================================
 //pull categories of data
@@ -58,6 +58,7 @@ var gameDescription = "we are awesome coders";
 var gameImageUrl;
 var gameCheapID;
 var esrb = "";
+var storeName;
 
 searchBar.on("keypress", function (event) {
   var keycode = event.keyCode;
@@ -91,67 +92,72 @@ searchBar.on("keypress", function (event) {
       console.log(esrb);
       console.log(gameDescription);
       console.log(gameImageUrl);
-    });
 
-    //get array of games closely matching from cheapshark api
-    var settings = {
-      async: true,
-      crossDomain: true,
-      url: "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
-        gameCheap +
-        "&exact=0",
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-        "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
-      },
-    };
-
-    $.ajax(settings).done(function (cheapResponseArr) {
-      console.log(cheapResponseArr);
-      gameCheapID = cheapResponseArr[0].gameID;
-
-      //nested call to cheap as details are needed from above
-      //get specific info about 1 game (wow) cheapshark
+      //get array of games closely matching from cheapshark api
       var settings = {
         async: true,
         crossDomain: true,
-        url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
-          gameCheapID,
+        url:
+          "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
+          gameCheap +
+          "&exact=0",
         method: "GET",
         headers: {
           "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-          "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+          "x-rapidapi-key":
+            "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
         },
       };
 
-      $.ajax(settings).done(function (cheapResponseSingle) {
-        console.log(cheapResponseSingle);
-        price = cheapResponseSingle.deals[0].price;
-        console.log(price);
-        storeCheapID = cheapResponseSingle.deals[0].storeID;
+      $.ajax(settings).done(function (cheapResponseArr) {
+        console.log(cheapResponseArr);
+        gameCheapID = cheapResponseArr[0].gameID;
 
-        //nested call to cheap as storeid needed from above
-        //cheapshark stores
+        //nested call to cheap as details are needed from above
+        //get specific info about 1 game (wow) cheapshark
         var settings = {
           async: true,
           crossDomain: true,
-          url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+          url:
+            "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
+            gameCheapID,
           method: "GET",
           headers: {
             "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-            "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+            "x-rapidapi-key":
+              "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
           },
         };
 
-        $.ajax(settings).done(function (cheapStoresResponse) {
-          console.log(storeCheapID);
-          console.log(cheapStoresResponse);
-          //cause store id is +1 of array value...
-          console.log(cheapStoresResponse[storeCheapID - 1].storeName);
-          addCard()
+        $.ajax(settings).done(function (cheapResponseSingle) {
+          console.log(cheapResponseSingle);
+          price = cheapResponseSingle.deals[0].price;
+          console.log(price);
+          storeCheapID = cheapResponseSingle.deals[0].storeID;
 
+          //nested call to cheap as storeid needed from above
+          //cheapshark stores
+          var settings = {
+            async: true,
+            crossDomain: true,
+            url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+            method: "GET",
+            headers: {
+              "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+              "x-rapidapi-key":
+                "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+            },
+          };
 
+          $.ajax(settings).done(function (cheapStoresResponse) {
+            console.log(storeCheapID);
+            console.log(cheapStoresResponse);
+            //cause store id is +1 of array value...
+            console.log(cheapStoresResponse[storeCheapID - 1].storeName);
+            storeName = cheapStoresResponse[storeCheapID - 1].storeName;
+            console.log(gameImageUrl);
+            addCard();
+          });
         });
       });
     });
@@ -159,6 +165,8 @@ searchBar.on("keypress", function (event) {
 });
 
 function addCard() {
+  console.log("hi");
+  console.log(gameImageUrl);
   var cardDiv = $("<div>");
   cardDiv.addClass("card");
   var cardImgDiv = $("<div>");
@@ -168,7 +176,8 @@ function addCard() {
   cardTitle.addClass("card-title");
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  cardImgDiv.attr("src", gameImageUrl);
+  gameImg.attr("src", gameImageUrl);
+  cardImgDiv.append(gameImg);
   cardDiv.append(cardImgDiv);
-  bigContainer.append(cardDiv)
+  bigContainer.append(cardDiv);
 }
