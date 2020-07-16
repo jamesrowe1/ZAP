@@ -30,6 +30,7 @@ function shareGame() {
   // get most recent submission
   //unsure of gametitle
 
+  //   remember to tak out the alert!!!
   myShare.addEventListener("click", function (event) {
     event.preventDefault();
     console.log("myShare");
