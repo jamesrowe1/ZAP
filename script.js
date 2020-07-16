@@ -46,6 +46,9 @@ var gameName = "World of Warcraft";
 var gameRawg = game.replace(/\s+/g, "-").toLowerCase();
 var gameCheap = game.replace(/\s/g);
 var price = "$19.99";
+var gameDescription = "we are awesome coders";
+var gameImageUrl =
+  "https://media.rawg.io/media/games/1dc/1dca31934274ae06195b71cafe56f375.jpg";
 $.ajax({
   url: "https://api.rawg.io/api/games/world-of-warcraft",
   method: "GET",
