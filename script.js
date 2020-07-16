@@ -44,8 +44,11 @@ function shareGame() {
 //get specific details from rawg api
 var gameName = "lego Batman";
 var esrb = "";
+
+//Rawg API has weird naming conventions
 var gameRawg = gameName.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
 gameRawg = gameRawg.replace(/-{2,}/g, "-");
+//CheapShark API also has weird naming conventions
 var gameCheap = gameName.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
 var price = "$19.99";
 var storeCheapID;
