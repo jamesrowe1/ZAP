@@ -261,15 +261,44 @@ function addCard() {
   $('.btn-share').on('click', function (event) {
     alert('It works')
     // Get the modal
-    var modal = document.getElementById('myModal')
+    $.
     //   //   remember to tak out the alert!!!
     // make a modal with a linkto the image
 
-    $('.modal_1').modal('show');
-      $('.modal_2').modal('hide');
-      // add element that has default hidden and shows when click share ONLY
-    }
-    //   // get most recent submission
+    $(window).on('load', function(){
+	
+      $.expr[":"].external = function(a) {		
+        var linkhn = a.hostname.split('.').reverse();
+        var linkHref = linkhn[1] + "." + linkhn[0];
+        
+        var domainhn = window.location.hostname.split('.').reverse();
+        var domainHref = domainhn[1] + "." + domainhn[0];
+      
+        return !a.href.match(/^mailto\:/) && !a.href.match(/^tel\:/) && linkHref !== domainHref;
+      };
+      
+      $("a:external").addClass("ext_link");
+      
+      $(function() {
+        
+        $('a.ext_link').click(function() {
+           // open a modal 
+          $('a:external').attr('data-toggle', 'modal');
+          $('a:external').attr('data-target', '#speedbump');
+          //go to link on modal close
+          var url = $(this).attr('href');
+          $('.btn-modal.btn-continue').click(function() {
+            window.open(url);
+            $('.btn-modal.btn-continue').off();
+          });
+          $('.btn-modal.btn-close').click(function() {
+            $('#speedbump').modal('hide');
+            $('.btn-modal.btn-close').off();
+          }); 
+        });
+        
+      });  
+    });most recent submission
     //   //unsure of gametitle
 
     // Get the <span> element that closes the modal
