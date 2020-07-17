@@ -89,6 +89,7 @@ searchBar.on("keypress", function (event) {
       gameDescription = rawgResponse.description;
       //setting the image
       gameImageUrl = rawgResponse.background_image;
+      gameName = rawgResponse.name;
       console.log(esrb);
       console.log(gameDescription);
       console.log(gameImageUrl);
@@ -109,6 +110,7 @@ searchBar.on("keypress", function (event) {
 
       $.ajax(settings).done(function (cheapResponseArr) {
         console.log(cheapResponseArr);
+<<<<<<< HEAD
         gameCheapID = cheapResponseArr[0].gameID;
 
         //nested call to cheap as details are needed from above
@@ -133,10 +135,23 @@ searchBar.on("keypress", function (event) {
 
           //nested call to cheap as storeid needed from above
           //cheapshark stores
+=======
+        if (cheapResponseArr.length === 0) {
+          price = "Not for sale";
+          storeName = "Not for sale";
+          addCard();
+        } else {
+          gameCheapID = cheapResponseArr[0].gameID;
+
+          //nested call to cheap as details are needed from above
+          //get specific info about 1 game (wow) cheapshark
+>>>>>>> 09c80b73cb9dac9f397e990e92eb26fd73f172a4
           var settings = {
             async: true,
             crossDomain: true,
-            url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+            url:
+              "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
+              gameCheapID,
             method: "GET",
             headers: {
               "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
@@ -144,35 +159,85 @@ searchBar.on("keypress", function (event) {
             },
           };
 
-          $.ajax(settings).done(function (cheapStoresResponse) {
-            console.log(storeCheapID);
-            console.log(cheapStoresResponse);
-            //cause store id is +1 of array value...
-            console.log(cheapStoresResponse[storeCheapID - 1].storeName);
-            storeName = cheapStoresResponse[storeCheapID - 1].storeName;
-            console.log(gameImageUrl);
-            addCard();
+          $.ajax(settings).done(function (cheapResponseSingle) {
+            console.log(cheapResponseSingle);
+            price = cheapResponseSingle.deals[0].price;
+            console.log(price);
+            storeCheapID = cheapResponseSingle.deals[0].storeID;
+
+            //nested call to cheap as storeid needed from above
+            //cheapshark stores
+            var settings = {
+              async: true,
+              crossDomain: true,
+              url: "https://cheapshark-game-deals.p.rapidapi.com/stores",
+              method: "GET",
+              headers: {
+                "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
+                "x-rapidapi-key":
+                  "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+              },
+            };
+
+            $.ajax(settings).done(function (cheapStoresResponse) {
+              console.log(storeCheapID);
+              console.log(cheapStoresResponse);
+              //cause store id is +1 of array value...
+              console.log(cheapStoresResponse[storeCheapID - 1].storeName);
+              storeName = cheapStoresResponse[storeCheapID - 1].storeName;
+              console.log(gameImageUrl);
+              addCard();
+            });
           });
-        });
+        }
       });
     });
   }
 });
 
 function addCard() {
-  console.log("hi");
-  console.log(gameImageUrl);
+  //create card div
   var cardDiv = $("<div>");
   cardDiv.addClass("card");
+
+  //create card image div
   var cardImgDiv = $("<div>");
   cardImgDiv.addClass("card-image");
   var gameImg = $("<img>");
+  gameImg.attr("src", gameImageUrl);
+
+  //create cardTitle
   var cardTitle = $("<span>");
-  cardTitle.addClass("card-title");
+  cardTitle.addClass("card-title red-text");
+  cardTitle.text(gameName);
+
+  //create esrb rating div
+  var cardESRB = $("<div>");
+  cardESRB.addClass("card-content card-esrb");
+  cardESRB.text("ESRB Rating: " + esrb);
+
+  //create card description
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  gameImg.attr("src", gameImageUrl);
+  cardDescription.html(gameDescription);
+
+  //create price div
+  var cardPrice = $("<div>");
+  cardPrice.addClass("card-content card-price");
+  cardPrice.text("Price: $" + price);
+
+  //create store div
+  var cardStore = $("<div>");
+  cardStore.addClass("card-content card-store");
+  cardStore.text("Available at: " + storeName);
+
+  //append everything
   cardImgDiv.append(gameImg);
+  cardImgDiv.append(cardTitle);
   cardDiv.append(cardImgDiv);
+  cardDiv.append(cardESRB);
+  cardDiv.append(cardDescription);
+  cardDiv.append(cardPrice);
+  cardDiv.append(cardStore);
   bigContainer.prepend(cardDiv);
 }
