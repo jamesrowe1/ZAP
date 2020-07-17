@@ -175,19 +175,4 @@ function addCard() {
   cardImgDiv.append(gameImg);
   cardDiv.append(cardImgDiv);
   bigContainer.prepend(cardDiv);
-}#
-ex1 {
-  display: block;
-  margin - left: auto;
-  margin - right: auto;
-  width: 50 % ;
-
-}
-
-#
-ex2 {
-  display: block;
-  margin - left: auto;
-  margin - right: auto;
-  width: 50 % ;
 }
