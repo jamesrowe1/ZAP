@@ -17,19 +17,6 @@ $(document).ready(function () {
 
 // ==================================================
 //pull categories of data
-//save button
-var myGame = document.querySelectorAll(".save");
-
-function saveGame() {
-  // get most recent submission
-  //unsure of gametitle
-  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
-
-  myGame.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("myGame");
-  });
-}
 
 //share button
 var myShare = document.querySelectorAll(".share");
@@ -63,6 +50,7 @@ var isF2P = false;
 
 searchBar.on("keypress", function (event) {
   var keycode = event.keyCode;
+  isF2P = false;
   if (keycode === 13) {
     event.preventDefault();
     gameName = searchBar.val();
@@ -122,9 +110,13 @@ searchBar.on("keypress", function (event) {
         console.log(cheapResponseArr);
 
         //if there are places to buy, or its F2P, set not to sale
-        if (cheapResponseArr.length === 0 || isF2P) {
-          price = "Not for sale";
-          storeName = "Not for sale";
+        if (
+          cheapResponseArr.length === 0 ||
+          isF2P ||
+          rawgResponse.stores.length === 0
+        ) {
+          price = "Not for sale online";
+          storeName = "Not for sale online";
           addCard();
         } else {
           gameCheapID = cheapResponseArr[0].gameID;
@@ -147,10 +139,19 @@ searchBar.on("keypress", function (event) {
 
           $.ajax(settings).done(function (cheapResponseSingle) {
             console.log(cheapResponseSingle);
+            //set default here
             price = "$" + cheapResponseSingle.deals[0].price;
-            console.log(price);
             storeCheapID = cheapResponseSingle.deals[0].storeID;
 
+            //find the lowest price
+            for (var l = 0; l < cheapResponseSingle.deals.length; l++) {
+              if (cheapResponseSingle.deals[l].price < price) {
+                price = cheapResponseSingle.deals[l].price;
+                storeCheapID = cheapResponseSingle.deals[l].storeID;
+              }
+            }
+
+            console.log(price);
             //nested call to cheap as storeid needed from above
             //cheapshark stores
             var settings = {
@@ -187,8 +188,9 @@ function addCard() {
   cardDiv.addClass("card");
 
   //create card image div
+
   var cardImgDiv = $("<div>");
-  cardImgDiv.addClass("card-image");
+  cardImgDiv.addClass("card-image center");
   var gameImg = $("<img>");
   gameImg.attr("src", gameImageUrl);
 
@@ -200,30 +202,56 @@ function addCard() {
   //create esrb rating div
   var cardESRB = $("<div>");
   cardESRB.addClass("card-content card-esrb");
-  cardESRB.text("ESRB Rating: " + esrb);
+  cardESRB.html("<h2>ESRB Rating: </h2>" + esrb);
 
   //create card description
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  cardDescription.html(gameDescription);
+  cardDescription.html("<h2>Game Description:</h2>" + gameDescription);
 
   //create price div
   var cardPrice = $("<div>");
   cardPrice.addClass("card-content card-price");
-  cardPrice.text("Price: " + price);
+  cardPrice.html("<h2>Price: </h2>" + price);
 
   //create store div
   var cardStore = $("<div>");
   cardStore.addClass("card-content card-store");
-  cardStore.text("Available at: " + storeName);
+  cardStore.html("<h2>Available at: </h2>" + storeName);
+
+  //create buttons
+  var cardButtons = $("<div>");
+  cardButtons.addClass("card-content card-buttons");
+  var shareButton = $("<a>");
+  shareButton.addClass("btn-share waves-effect waves-light btn");
+  shareButton.text("Share");
+  var likeButton = $("<a>");
+  likeButton.addClass("btn-like waves-effect waves-light btn");
+  likeButton.text("Like");
 
   //append everything
-  cardImgDiv.append(gameImg);
   cardImgDiv.append(cardTitle);
+  cardImgDiv.append(gameImg);
+
   cardDiv.append(cardImgDiv);
+  //cardDiv.append(gameImg);
   cardDiv.append(cardDescription);
   cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
+  cardButtons.append(shareButton);
+  cardButtons.append(likeButton);
+  cardDiv.append(cardButtons);
   bigContainer.prepend(cardDiv);
+
+  $(".btn-like").on("click", function (event) {
+    alert("It works");
+  });
+
+  $(".btn-share").on("click", function (event) {
+    //   // get most recent submission
+    //   //unsure of gametitle
+    alert("It works");
+    //   //   remember to tak out the alert!!!
+  });
 }

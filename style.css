@@ -1,42 +1,21 @@
 .card .card-image .card-title {
 	position: relative;
 }
-
 .logosize {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
 }
-
 #logo {
 	width: 200px;
 	height: 150px;
-}
-
-.editLink {
-	text-align: center;
-	text-decoration: none;
-}
-
-h2 {
-	color: white;
-	font-size: 20px;
-}
-
-.editLink:hover {
-	color: red;
-}
-
-.nav-wrapper {
-	color: #ff1616 !important;
 }
 body {
 	background-color: #111111;
 	margin: 0;
 	overflow-x: hidden;
 }
-
 .bg {
 	position: fixed;
 	top: -50%;
@@ -45,112 +24,96 @@ body {
 	bottom: -50%;
 	width: 200%;
 	height: 200vh;
-
-	background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
-
 	background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
-
 	background-repeat: repeat;
 	animation: bg-animation 0.2s infinite;
 	opacity: 0.9;
 	visibility: visible;
+	z-index: -1;
 }
-
 @keyframes bg-animation {
 	0% {
 		transform: translate(0, 0);
 	}
-
 	10% {
 		transform: translate(-5%, -5%);
 	}
-
 	20% {
 		transform: translate(-10%, 5%);
 	}
-
 	30% {
 		transform: translate(5%, -10%);
 	}
-
 	40% {
 		transform: translate(-5%, 15%);
 	}
-
 	50% {
 		transform: translate(-10%, 5%);
 	}
-
 	60% {
 		transform: translate(15%, 0);
 	}
-
 	70% {
 		transform: translate(0, 10%);
 	}
-
 	80% {
 		transform: translate(-15%, 0);
 	}
-
 	90% {
 		transform: translate(10%, 5%);
 	}
-
 	100% {
 		transform: translate(5%, 0);
 	}
 }
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 }
-
 html {
 	box-sizing: border-box;
 }
-
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
 }
-
 .column {
 	float: left;
 	width: 33.3%;
 	margin-bottom: 16px;
 	padding: 0 8px;
 }
-
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	margin: 8px;
 }
-
+h3 {
+	font-size: 1.5rem;
+}
+.card .card-content {
+	margin: 0;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
 .about-section {
 	padding: 50px;
 	text-align: center;
 	background-color: #474e5d;
 	color: white;
 }
-
 .container {
 	padding: 0 16px;
 }
-
 .container::after,
 .row::after {
 	content: "";
 	clear: both;
 	display: table;
 }
-
 .title {
 	color: grey;
 }
-
 .button {
 	border: none;
 	outline: 0;
@@ -162,14 +125,15 @@ html {
 	cursor: pointer;
 	width: 100%;
 }
-
 .button:hover {
 	background-color: #555;
 }
-
 @media screen and (max-width: 650px) {
 	.column {
 		width: 100%;
 		display: block;
 	}
+}
+.aboutus {
+	background-color: tomato;
 }
