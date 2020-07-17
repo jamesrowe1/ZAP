@@ -32,19 +32,49 @@ function saveGame() {
 }
 
 //share button
-var myShare = document.querySelectorAll(".share");
-
-function shareGame() {
-  // get most recent submission
-  //unsure of gametitle
-
-  //   remember to tak out the alert!!!
-  myShare.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("myShare");
-    alert("Done and waiting for James ajax stuff");
-  });
+function socialWindow(url) {
+  var left = (screen.width - 570) / 2;
+  var top = (screen.height - 570) / 2;
+  var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+  // params = "";
+  window.open(url,"NewWindow",params);
 }
+
+function setShareLinks() {
+  var pageUrl = encodeURIComponent(document.URL);
+  var tweet = encodeURIComponent($("meta[property='og:description']").attr("content"));
+
+  $(".social-share.facebook").on("click", function() {
+    url = "https://www.facebook.com/sharer.php?u=" + pageUrl;
+    socialWindow(url);
+  });
+
+  $(".social-share.twitter").on("click", function() {
+    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
+    socialWindow(url);
+  });
+
+  $(".social-share.email").on("click", function() {
+    url = "mailto:?Subject=" + tweet + "&amp;Body=" + pageUrl;
+    socialWindow(url);
+  });
+
+}
+});
+</script> 
+// var myShare = document.querySelectorAll(".share");
+
+// function shareGame() {
+//   // get most recent submission
+//   //unsure of gametitle
+
+//   //   remember to tak out the alert!!!
+//   myShare.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     console.log("myShare");
+//     alert("Done and waiting for James ajax stuff");
+//   });
+// }
 //     on click
 //     pull from API
 //     pulls up lists according to User input
