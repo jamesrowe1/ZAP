@@ -187,6 +187,18 @@ function addCard() {
   cardDiv.addClass("card");
 
   //create card image div
+
+  var cardImgDiv = $("<div>");
+  cardImgDiv.addClass("card-image");
+  var gameImg = $("<img>");
+  5;
+  gameImg.attr("src", gameImageUrl);
+
+  var cardImgDiv = $("<div>");
+  cardImgDiv.addClass("card-image");
+  var gameImg = $("<img>");
+  gameImg.attr("src", gameImageUrl);
+
   var cardImgDiv = $("<div>");
   cardImgDiv.addClass("card-image");
   var gameImg = $("<img>");
@@ -237,19 +249,15 @@ function addCard() {
   cardDiv.append(shareButton);
   cardDiv.append(likeButton);
   bigContainer.prepend(cardDiv);
-}
 
-//save button to each div
+  $(".btn-like").on("click", function (event) {
+    alert("It works");
+  });
 
-var myGame = document.querySelectorAll(".save");
-
-function saveGame() {
-  // get most recent submission
-  //unsure of gametitle
-  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
-
-  myGame.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("myGame");
+  $(".btn-share").on("click", function (event) {
+    //   // get most recent submission
+    //   //unsure of gametitle
+    alert("It works");
+    //   //   remember to tak out the alert!!!
   });
 }
