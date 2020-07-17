@@ -1,15 +1,12 @@
 .card .card-image .card-title {
 	position: relative;
 }
-<<<<<<< HEAD
-=======
 
 .btn {
-  margin-right: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+	margin-right: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
->>>>>>> 457ec899e7d3798cfb83c469af4ddc7b8986d653
 .logosize {
 	display: block;
 	margin-left: auto;
@@ -20,6 +17,16 @@
 	width: 200px;
 	height: 150px;
 }
+
+.editLink {
+	text-align: center;
+}
+
+h2 {
+	color: white;
+	font-size: 20px;
+}
+
 body {
 	background-color: #111111;
 	margin: 0;
@@ -41,70 +48,92 @@ body {
 	z-index: -1;
 }
 @keyframes bg-animation {
-<<<<<<< HEAD
 	0% {
 		transform: translate(0, 0);
 	}
+
 	10% {
 		transform: translate(-5%, -5%);
 	}
+
 	20% {
 		transform: translate(-10%, 5%);
 	}
+
 	30% {
 		transform: translate(5%, -10%);
 	}
+
 	40% {
 		transform: translate(-5%, 15%);
 	}
+
 	50% {
 		transform: translate(-10%, 5%);
 	}
+
 	60% {
 		transform: translate(15%, 0);
 	}
+
 	70% {
 		transform: translate(0, 10%);
 	}
+
 	80% {
 		transform: translate(-15%, 0);
 	}
+
 	90% {
 		transform: translate(10%, 5%);
 	}
+
 	100% {
 		transform: translate(5%, 0);
 	}
 }
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 }
+
 html {
 	box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
 }
+
 .column {
 	float: left;
 	width: 33.3%;
 	margin-bottom: 16px;
 	padding: 0 8px;
 }
+
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	margin: 8px;
 }
+
 h3 {
 	font-size: 1.5rem;
 }
+
+h2 {
+	font-size: 1.75rem;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .card .card-content {
 	margin: 0;
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 .about-section {
 	padding: 50px;
@@ -112,18 +141,22 @@ h3 {
 	background-color: #474e5d;
 	color: white;
 }
+
 .container {
 	padding: 0 16px;
 }
+
 .container::after,
 .row::after {
 	content: "";
 	clear: both;
 	display: table;
 }
+
 .title {
 	color: grey;
 }
+
 .button {
 	border: none;
 	outline: 0;
@@ -135,151 +168,18 @@ h3 {
 	cursor: pointer;
 	width: 100%;
 }
+
 .button:hover {
 	background-color: #555;
 }
+
 @media screen and (max-width: 650px) {
 	.column {
 		width: 100%;
 		display: block;
 	}
 }
+
 .aboutus {
 	background-color: tomato;
-=======
-  0% {
-    transform: translate(0, 0);
-  }
-
-  10% {
-    transform: translate(-5%, -5%);
-  }
-
-  20% {
-    transform: translate(-10%, 5%);
-  }
-
-  30% {
-    transform: translate(5%, -10%);
-  }
-
-  40% {
-    transform: translate(-5%, 15%);
-  }
-
-  50% {
-    transform: translate(-10%, 5%);
-  }
-
-  60% {
-    transform: translate(15%, 0);
-  }
-
-  70% {
-    transform: translate(0, 10%);
-  }
-
-  80% {
-    transform: translate(-15%, 0);
-  }
-
-  90% {
-    transform: translate(10%, 5%);
-  }
-
-  100% {
-    transform: translate(5%, 0);
-  }
->>>>>>> 457ec899e7d3798cfb83c469af4ddc7b8986d653
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.card .card-content {
-  margin: 0;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #474e5d;
-  color: white;
-}
-
-.container {
-  padding: 0 16px;
-}
-
-.container::after,
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-
-.aboutus {
-  background-color: tomato;
 }
