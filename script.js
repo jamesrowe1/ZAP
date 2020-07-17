@@ -32,22 +32,10 @@ function saveGame () {
 }
 
 //share button - these are down below copied here for eassy to see reference
-var shareButton = $('<button>')
-shareButton.addClass('btn-share')
-shareButton.text('Share')
+// var shareButton = $('<button>')
+// shareButton.addClass('btn-share')
+// shareButton.text('Share')
 
-$(".btn-share").on("click", function(event) {
-  //   // get most recent submission
-  //   //unsure of gametitle
-  alert("It works")
-  //   //   remember to tak out the alert!!!
-  })
-}
-//     on click
-//     pull from API
-//     pulls up lists according to User input
-
-//get specific details from rawg api
 var gameName = 'lego Batman'
 
 var price = '$19.99'
@@ -247,4 +235,11 @@ function addCard () {
   cardDiv.append(shareButton)
   cardDiv.append(likeButton)
   bigContainer.prepend(cardDiv)
+
+  $('.btn-share').on('click', function (event) {
+    //   // get most recent submission
+    //   //unsure of gametitle
+    alert('It works')
+    //   //   remember to tak out the alert!!!
+  })
 }
