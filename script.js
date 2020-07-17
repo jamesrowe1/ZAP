@@ -50,6 +50,7 @@ var isF2P = false;
 
 searchBar.on("keypress", function (event) {
   var keycode = event.keyCode;
+  isF2P = false;
   if (keycode === 13) {
     event.preventDefault();
     gameName = searchBar.val();
@@ -201,29 +202,31 @@ function addCard() {
   //create esrb rating div
   var cardESRB = $("<div>");
   cardESRB.addClass("card-content card-esrb");
-  cardESRB.text("ESRB Rating: " + esrb);
+  cardESRB.html("<h2>ESRB Rating: </h2>" + esrb);
 
   //create card description
   var cardDescription = $("<div>");
   cardDescription.addClass("card-content");
-  cardDescription.html(gameDescription);
+  cardDescription.html("<h2>Game Description:</h2>" + gameDescription);
 
   //create price div
   var cardPrice = $("<div>");
   cardPrice.addClass("card-content card-price");
-  cardPrice.text("Price: " + price);
+  cardPrice.html("<h2>Price: </h2>" + price);
 
   //create store div
   var cardStore = $("<div>");
   cardStore.addClass("card-content card-store");
-  cardStore.text("Available at: " + storeName);
+  cardStore.html("<h2>Available at: </h2>" + storeName);
 
   //create buttons
-  var shareButton = $("<button>");
-  shareButton.addClass("btn-share");
+  var cardButtons = $("<div>");
+  cardButtons.addClass("card-content card-buttons");
+  var shareButton = $("<a>");
+  shareButton.addClass("btn-share waves-effect waves-light btn");
   shareButton.text("Share");
-  var likeButton = $("<button>");
-  likeButton.addClass("btn-like");
+  var likeButton = $("<a>");
+  likeButton.addClass("btn-like waves-effect waves-light btn");
   likeButton.text("Like");
 
   //append everything
@@ -231,12 +234,14 @@ function addCard() {
   cardImgDiv.append(gameImg);
 
   cardDiv.append(cardImgDiv);
+  //cardDiv.append(gameImg);
   cardDiv.append(cardDescription);
   cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
-  cardDiv.append(shareButton);
-  cardDiv.append(likeButton);
+  cardButtons.append(shareButton);
+  cardButtons.append(likeButton);
+  cardDiv.append(cardButtons);
   bigContainer.prepend(cardDiv);
 
   $(".btn-like").on("click", function (event) {

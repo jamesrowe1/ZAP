@@ -2,6 +2,11 @@
   position: relative;
 }
 
+.btn {
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .logosize {
   display: block;
   margin-left: auto;
@@ -114,10 +119,16 @@ h3 {
   font-size: 1.5rem;
 }
 
+h2 {
+  font-size: 1.75rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .card .card-content {
   margin: 0;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .about-section {
   padding: 50px;
@@ -163,10 +174,7 @@ h3 {
     display: block;
   }
 }
-<<<<<<< HEAD
-=======
 
 .aboutus {
   background-color: tomato;
 }
->>>>>>> 9cdd9b3ec555de8ce93b2b1ccca83fe15601b2a1
