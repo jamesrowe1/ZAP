@@ -251,7 +251,10 @@ function addCard() {
   bigContainer.prepend(cardDiv);
 
   $(".btn-like").on("click", function (event) {
-    alert("It works");
+    // $("this").toggleClass("clicked");
+    //   // event.preventDefault();
+    //   var userLike = localStorage.setItem("click");
+    //  console.log(userLike);
   });
 
   $(".btn-share").on("click", function (event) {
