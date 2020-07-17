@@ -260,10 +260,10 @@ function addCard() {
   // include a hide attribute so that the modal is hidden as default
   $('.btn-share').on('click', function (event) {
     alert('It works')
-    //   //   remember to tak out the alert!!!
-    // make a modal with a linkto the image
     // Get the modal
     var modal = document.getElementById('myModal')
+    //   //   remember to tak out the alert!!!
+    // make a modal with a linkto the image
 
     $('.modal_1').modal('show');
       $('.modal_2').modal('hide');
