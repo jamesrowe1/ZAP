@@ -2,11 +2,6 @@
   position: relative;
 }
 
-.btn {
-  margin-right: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
 .logosize {
   display: block;
   margin-left: auto;
@@ -40,8 +35,12 @@ body {
   bottom: -50%;
   width: 200%;
   height: 200vh;
+<<<<<<< HEAD
+  background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+=======
   background: transparent
     url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+>>>>>>> 77c0aa7b1bf36b621ac9cb06526fb5099646b163
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
@@ -121,21 +120,6 @@ html {
   margin: 8px;
 }
 
-h3 {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.card .card-content {
-  margin: 0;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
 .about-section {
   padding: 50px;
   text-align: center;
@@ -241,6 +225,11 @@ h2 {
   }
 }
 
+<<<<<<< HEAD
+.aboutus {
+  background-color: to;
+}
+=======
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -258,3 +247,4 @@ h2 {
     opacity: 1;
   }
 }
+>>>>>>> 77c0aa7b1bf36b621ac9cb06526fb5099646b163

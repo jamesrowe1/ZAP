@@ -259,6 +259,7 @@ function addCard (game) {
   var shareButton = $('<a>')
   shareButton.addClass('btn-share waves-effect waves-light btn modal-trigger')
   shareButton.attr('href', '#myModal')
+  shareButton.click(shareBtnClick)
   shareButton.text('Share')
 
   var likeButton = $('<button>')
@@ -282,7 +283,9 @@ function addCard (game) {
   cardDiv.append(cardButtons)
   bigContainer.prepend(cardDiv)
 }
-
+function shareBtnClick (event) {
+  $('#myModal').modal()
+}
 function likeBtnClick (event) {
   alert('CLICKED')
 
