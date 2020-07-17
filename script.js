@@ -232,14 +232,16 @@ function addCard() {
 
   //create buttons
   var shareButton = $("<button>");
+  shareButton.addClass("btn-share");
   shareButton.text("Share");
   var likeButton = $("<button>");
+  likeButton.addClass("btn-like");
   likeButton.text("Like");
 
   //append everything
-
-  cardImgDiv.append(gameImg);
   cardImgDiv.append(cardTitle);
+  cardImgDiv.append(gameImg);
+
   cardDiv.append(cardImgDiv);
   cardDiv.append(cardDescription);
   cardDiv.append(cardESRB);
