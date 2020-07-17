@@ -189,18 +189,7 @@ function addCard() {
   //create card image div
 
   var cardImgDiv = $("<div>");
-  cardImgDiv.addClass("card-image");
-  var gameImg = $("<img>");
-  5;
-  gameImg.attr("src", gameImageUrl);
-
-  var cardImgDiv = $("<div>");
-  cardImgDiv.addClass("card-image");
-  var gameImg = $("<img>");
-  gameImg.attr("src", gameImageUrl);
-
-  var cardImgDiv = $("<div>");
-  cardImgDiv.addClass("card-image");
+  cardImgDiv.addClass("card-image center");
   var gameImg = $("<img>");
   gameImg.attr("src", gameImageUrl);
 
