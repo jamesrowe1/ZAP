@@ -87,94 +87,38 @@ body {
     transform: translate(5%, 0);
   }
 }
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.card .card-content {
-  margin: 0;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #474e5d;
-  color: white;
-}
-
-.container {
-  padding: 0 16px;
-}
-
-.container::after,
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
+div#speedbump {
+  display: none;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
   width: 100%;
+  background: #eeeeee;
 }
-
-.button:hover {
-  background-color: #555;
+#speedbump h4.modal-title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #004795;
+  font-size: 2.5em;
 }
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
+.modal-body p {
+  text-align: center;
+  font-size: 1em;
 }
-
-.aboutus {
-  background-color: tomato;
+button.btn-modal:hover {
+  cursor: pointer;
+}
+button.btn-modal.btn-continue {
+  background-color: #8bc63e;
+  border: 0px;
+  margin: 1% 0;
+}
+button.btn-modal.btn-close {
+  background-color: inherit;
+  border: 1px solid #030000;
+  color: #030000;
+  font-weight: 400;
+}
+.modal-header .close {
+  font-size: 3.5em;
 }
