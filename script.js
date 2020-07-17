@@ -98,44 +98,20 @@ searchBar.on("keypress", function (event) {
       var settings = {
         async: true,
         crossDomain: true,
-        url: "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
+        url:
+          "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
           gameCheap +
           "&exact=0",
         method: "GET",
         headers: {
           "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-          "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+          "x-rapidapi-key":
+            "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
         },
       };
 
       $.ajax(settings).done(function (cheapResponseArr) {
         console.log(cheapResponseArr);
-<<<<<<< HEAD
-        gameCheapID = cheapResponseArr[0].gameID;
-
-        //nested call to cheap as details are needed from above
-        //get specific info about 1 game (wow) cheapshark
-        var settings = {
-          async: true,
-          crossDomain: true,
-          url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
-            gameCheapID,
-          method: "GET",
-          headers: {
-            "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-            "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
-          },
-        };
-
-        $.ajax(settings).done(function (cheapResponseSingle) {
-          console.log(cheapResponseSingle);
-          price = cheapResponseSingle.deals[0].price;
-          console.log(price);
-          storeCheapID = cheapResponseSingle.deals[0].storeID;
-
-          //nested call to cheap as storeid needed from above
-          //cheapshark stores
-=======
         if (cheapResponseArr.length === 0) {
           price = "Not for sale";
           storeName = "Not for sale";
@@ -145,7 +121,6 @@ searchBar.on("keypress", function (event) {
 
           //nested call to cheap as details are needed from above
           //get specific info about 1 game (wow) cheapshark
->>>>>>> 09c80b73cb9dac9f397e990e92eb26fd73f172a4
           var settings = {
             async: true,
             crossDomain: true,
@@ -155,7 +130,8 @@ searchBar.on("keypress", function (event) {
             method: "GET",
             headers: {
               "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-              "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+              "x-rapidapi-key":
+                "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
             },
           };
 
