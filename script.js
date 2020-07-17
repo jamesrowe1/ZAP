@@ -256,7 +256,7 @@ function addCard() {
 
     //localStorage.setItem("user", JSON.stringify(user));
   });
-
+  // share button here
   $(".btn-share").on("click", function (event) {
     //   // get most recent submission
     //   //unsure of gametitle
