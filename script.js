@@ -4,6 +4,9 @@ var searchForm = $("#searchForm");
 var searchBar = $("#search");
 var bigContainer = $("#bigContainer");
 
+//initialize
+var rawgResponseGlobal;
+
 $(document).ready(function () {
   $(".sidenav").sidenav();
 });
@@ -88,6 +91,7 @@ function RawgAPI(gameCardObj) {
     method: "GET",
   }).then(function (rawgResponse) {
     console.log(rawgResponse);
+    rawgResponseGlobal = rawgResponse;
     //esrb rating
     if (rawgResponse.esrb_rating === null) {
       gameCardObj.esrb = "No ESRB Rating";
@@ -133,12 +137,12 @@ function CheapSharkDealsAPI(gameCardObj) {
 
   $.ajax(settings).done(function (cheapResponseArr) {
     console.log(cheapResponseArr);
-
+    console.log("hey" + rawgResponseGlobal);
     //if there are places to buy, or its F2P, set not to sale
     if (
       cheapResponseArr.length === 0 ||
       gameCardObj.isF2P ||
-      rawgResponse.stores.length === 0
+      rawgResponseGlobal.stores.length === 0
     ) {
       gameCardObj.price = "Not for sale online";
       gameCardObj.storeName = "Not for sale online";
@@ -276,21 +280,6 @@ function addCard(game) {
   cardButtons.append(likeButton);
   cardDiv.append(cardButtons);
   bigContainer.prepend(cardDiv);
-
-  $(".btn-like").on("click", function (event) {
-    alert("It works");
-
-    // $("this").toggleClass("clicked");
-    event.preventDefault();
-    //   var userLike = localStorage.setItem("click");
-    // localStorage["storedClicks"] = clicks
-    var userLike = JSON.parse(localStorage.getItem("click")) || [];
-    userLike.unshift(gameName);
-    localStorage.setItem("click", JSON.stringify(userLike));
-    console.log(userLike);
-
-    //localStorage.setItem("user", JSON.stringify(user));
-  });
 
   $(".btn-share").on("click", function (event) {
     //   // get most recent submission
