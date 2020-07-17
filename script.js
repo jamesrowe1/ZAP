@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 // ==================================================
 //pull categories of data
+<<<<<<< HEAD
 //save button
 var myGame = document.querySelectorAll('.save')
 
@@ -30,6 +31,8 @@ function saveGame () {
     console.log('myGame')
   })
 }
+=======
+>>>>>>> 303f55849048a43fac4402ffa430b2d07f64a801
 
 //share button - these are down below copied here for eassy to see reference
 // var shareButton = $('<button>')
@@ -242,4 +245,19 @@ function addCard () {
     alert('It works')
     //   //   remember to tak out the alert!!!
   })
+}
+
+//save button to each div
+
+var myGame = document.querySelectorAll(".save");
+
+function saveGame() {
+  // get most recent submission
+  //unsure of gametitle
+  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
+
+  myGame.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("myGame");
+  });
 }
