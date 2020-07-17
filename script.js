@@ -263,7 +263,7 @@ function addCard (game) {
   shareButton.text('Share')
 
   var likeButton = $('<button>')
-  likeButton.addClass('btn-like')
+  likeButton.addClass('btn-like waves-effect waves-light btn modal-trigger')
   likeButton.text('Like')
   likeButton.click(likeBtnClick)
   likeButton.data('gameObj', JSON.stringify(game))
