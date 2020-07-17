@@ -237,19 +237,10 @@ function addCard() {
   cardDiv.append(shareButton);
   cardDiv.append(likeButton);
   bigContainer.prepend(cardDiv);
-}
 
-//save button to each div
+  //save button to each div
 
-var myGame = document.querySelectorAll(".save");
-
-function saveGame() {
-  // get most recent submission
-  //unsure of gametitle
-  var myGame = JSON.parse(localStorage.getItem("gameTitle"));
-
-  myGame.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("myGame");
+  $(".btn-like").on("click", function (event) {
+    alert("it works");
   });
 }
