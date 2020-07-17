@@ -259,19 +259,18 @@ function addCard() {
   // share button here
   // include a hide attribute so that the modal is hidden as default
   $('.btn-share').on('click', function (event) {
+    alert('It works')
+    //   //   remember to tak out the alert!!!
+    // make a modal with a linkto the image
+    // Get the modal
+    var modal = document.getElementById('myModal')
 
-    if($(this).attr())
-    $("#hide").click(function() {
+    $('.modal_1').modal('show');
+      $('.modal_2').modal('hide');
       // add element that has default hidden and shows when click share ONLY
     }
     //   // get most recent submission
     //   //unsure of gametitle
-    alert('It works')
-    //   //   remember to tak out the alert!!!
-    // make a modal with a linkto the image
-
-    // Get the modal
-    var modal = document.getElementById('myModal')
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName('close')[0]
