@@ -97,15 +97,13 @@ searchBar.on("keypress", function (event) {
       var settings = {
         async: true,
         crossDomain: true,
-        url:
-          "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
+        url: "https://cheapshark-game-deals.p.rapidapi.com/games?limit=60&title=" +
           gameCheap +
           "&exact=0",
         method: "GET",
         headers: {
           "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-          "x-rapidapi-key":
-            "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+          "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
         },
       };
 
@@ -118,14 +116,12 @@ searchBar.on("keypress", function (event) {
         var settings = {
           async: true,
           crossDomain: true,
-          url:
-            "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
+          url: "https://cheapshark-game-deals.p.rapidapi.com/games?id=" +
             gameCheapID,
           method: "GET",
           headers: {
             "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-            "x-rapidapi-key":
-              "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+            "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
           },
         };
 
@@ -144,8 +140,7 @@ searchBar.on("keypress", function (event) {
             method: "GET",
             headers: {
               "x-rapidapi-host": "cheapshark-game-deals.p.rapidapi.com",
-              "x-rapidapi-key":
-                "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
+              "x-rapidapi-key": "629a103ae7msh8d2e000534865ffp18dc6ejsna10a77d719b1",
             },
           };
 
@@ -180,4 +175,19 @@ function addCard() {
   cardImgDiv.append(gameImg);
   cardDiv.append(cardImgDiv);
   bigContainer.prepend(cardDiv);
+}#
+ex1 {
+  display: block;
+  margin - left: auto;
+  margin - right: auto;
+  width: 50 % ;
+
+}
+
+#
+ex2 {
+  display: block;
+  margin - left: auto;
+  margin - right: auto;
+  width: 50 % ;
 }
