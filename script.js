@@ -59,6 +59,7 @@ var gameImageUrl;
 var gameCheapID;
 var esrb = "";
 var storeName;
+var isF2P = false;
 
 searchBar.on("keypress", function (event) {
   var keycode = event.keyCode;
@@ -90,6 +91,13 @@ searchBar.on("keypress", function (event) {
       //setting the image
       gameImageUrl = rawgResponse.background_image;
       gameName = rawgResponse.name;
+
+      //figure out of if game is f2p
+      for (var k = 0; k < rawgResponse.tags.length; k++) {
+        if (rawgResponse.tags[k].name === "Free to Play") {
+          isF2P = true;
+        }
+      }
       console.log(esrb);
       console.log(gameDescription);
       console.log(gameImageUrl);
@@ -112,7 +120,9 @@ searchBar.on("keypress", function (event) {
 
       $.ajax(settings).done(function (cheapResponseArr) {
         console.log(cheapResponseArr);
-        if (cheapResponseArr.length === 0) {
+
+        //if there are places to buy, or its F2P, set not to sale
+        if (cheapResponseArr.length === 0 || isF2P) {
           price = "Not for sale";
           storeName = "Not for sale";
           addCard();
@@ -137,7 +147,7 @@ searchBar.on("keypress", function (event) {
 
           $.ajax(settings).done(function (cheapResponseSingle) {
             console.log(cheapResponseSingle);
-            price = cheapResponseSingle.deals[0].price;
+            price = "$" + cheapResponseSingle.deals[0].price;
             console.log(price);
             storeCheapID = cheapResponseSingle.deals[0].storeID;
 
@@ -200,7 +210,7 @@ function addCard() {
   //create price div
   var cardPrice = $("<div>");
   cardPrice.addClass("card-content card-price");
-  cardPrice.text("Price: $" + price);
+  cardPrice.text("Price: " + price);
 
   //create store div
   var cardStore = $("<div>");
