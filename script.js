@@ -203,6 +203,7 @@ function addCard() {
   var cardImgDiv = $("<div>");
   cardImgDiv.addClass("card-image");
   var gameImg = $("<img>");
+  5;
   gameImg.attr("src", gameImageUrl);
 
   //create cardTitle
@@ -236,6 +237,7 @@ function addCard() {
   shareButton.text("Share");
   var likeButton = $("<button>");
   likeButton.addClass("btn-like");
+  likeButton.attr("id", "testing");
   likeButton.text("Like");
 
   //append everything
@@ -250,4 +252,9 @@ function addCard() {
   cardDiv.append(shareButton);
   cardDiv.append(likeButton);
   bigContainer.prepend(cardDiv);
+
+  $(".btn-like").on("click", function (event) {
+    event.preventDefault();
+    alert("it works");
+  });
 }
