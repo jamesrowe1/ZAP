@@ -109,9 +109,13 @@ searchBar.on("keypress", function (event) {
         console.log(cheapResponseArr);
 
         //if there are places to buy, or its F2P, set not to sale
-        if (cheapResponseArr.length === 0 || isF2P) {
-          price = "Not for sale";
-          storeName = "Not for sale";
+        if (
+          cheapResponseArr.length === 0 ||
+          isF2P ||
+          rawgResponse.stores.length === 0
+        ) {
+          price = "Not for sale online";
+          storeName = "Not for sale online";
           addCard();
         } else {
           gameCheapID = cheapResponseArr[0].gameID;
@@ -134,10 +138,19 @@ searchBar.on("keypress", function (event) {
 
           $.ajax(settings).done(function (cheapResponseSingle) {
             console.log(cheapResponseSingle);
+            //set default here
             price = "$" + cheapResponseSingle.deals[0].price;
-            console.log(price);
             storeCheapID = cheapResponseSingle.deals[0].storeID;
 
+            //find the lowest price
+            for (var l = 0; l < cheapResponseSingle.deals.length; l++) {
+              if (cheapResponseSingle.deals[l].price < price) {
+                price = cheapResponseSingle.deals[l].price;
+                storeCheapID = cheapResponseSingle.deals[l].storeID;
+              }
+            }
+
+            console.log(price);
             //nested call to cheap as storeid needed from above
             //cheapshark stores
             var settings = {
