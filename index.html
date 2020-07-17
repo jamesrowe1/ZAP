@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- like button -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!-- like button -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="Assets/favicon.ico" />
+    <title>Zap</title>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon" href="Assets/favicon.ico" />
-  <title>Zap</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-</head>
+  <header>
+    <h1>
+      <img
+        src="ZAP Logo copy.png"
+        width="400"
+        height="350"
+        alt="zap logo"
+        class="logosize"
+        id="logo"
+      />
+    </h1>
+    <nav>
+      <div class="nav-wrapper #b71c1c red darken-4">
+        <form id="searchForm">
+          <div class="input-field">
+            <input id="search" type="search" required />
+            <label class="label-icon" for="search"
+              ><i class="material-icons">search</i></label
+            >
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
 
-<header>
-  <h1>
-    <img src="ZAP Logo copy.png" width="400" height="350" alt="zap logo" class="logosize" id="logo" />
-  </h1>
-  <nav>
-    <div class="nav-wrapper #b71c1c red darken-4">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required />
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+  </header>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
-  </ul>
-</header>
-
-<body>
-  <div class="bg"></div>
-  <div class="container" id="bigContainer"></div>
-  <!-- <div class="row">
+  <body>
+    <div class="bg"></div>
+    <div class="container" id="bigContainer"></div>
+    <!-- <div class="row">
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-image">
@@ -143,7 +160,6 @@
       </div>
     </div> -->
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
