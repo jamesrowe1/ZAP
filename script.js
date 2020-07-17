@@ -211,8 +211,8 @@ function addCard() {
   cardImgDiv.append(gameImg);
   cardImgDiv.append(cardTitle);
   cardDiv.append(cardImgDiv);
-  cardDiv.append(cardESRB);
   cardDiv.append(cardDescription);
+  cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
   bigContainer.prepend(cardDiv);
