@@ -48,30 +48,39 @@
 <body>
   <div class="bg"></div>
   <div class="container" id="bigContainer"></div>
-  <h2>Bottom Modal</h2>
-
-  <!-- Trigger/Open The Modal -->
-  <button id="myBtn">Open Modal</button>
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Modal Header</h2>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
-      </div>
-      <div class="modal-footer">
-        <h3>Modal Footer</h3>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        <p class="text-center">
+          <a href="https://www.solodev.com" class="btn btn-info btn-lg cta-open">External Link</a> <a href="#"
+            class="btn btn-info btn-lg cta-open">Internal Link</a>
+        </p>
       </div>
     </div>
-
   </div>
+
+  <!-- start modal-->
+  <div class="modal fade" id="speedbump" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Notice</h4>
+        </div>
+        <div class="modal-body">
+          <p>You are now leaving the our website website.</p>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" title="continue" class="btn btn-modal btn-continue"
+            data-dismiss="modal">Continue</button>
+          <button type="button" title="go back" class="btn btn-modal btn-close" data-dismiss="modal">Go Back</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--end modal-->
   <!-- <div class="row">
         <div class="col s12 m12">
             <div class="card">
