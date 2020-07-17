@@ -257,6 +257,7 @@ function addCard() {
     //localStorage.setItem("user", JSON.stringify(user));
   });
   // share button here
+  // include a hide attribute so that the modal is hidden as default
   $('.btn-share').on('click', function (event) {
     $("#hide").click(function() {
     }
