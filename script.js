@@ -217,7 +217,14 @@ function addCard() {
   cardStore.addClass("card-content card-store");
   cardStore.text("Available at: " + storeName);
 
+  //create buttons
+  var shareButton = $("<button>");
+  shareButton.text("Share");
+  var likeButton = $("<button>");
+  likeButton.text("Like");
+
   //append everything
+
   cardImgDiv.append(gameImg);
   cardImgDiv.append(cardTitle);
   cardDiv.append(cardImgDiv);
@@ -225,6 +232,8 @@ function addCard() {
   cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
+  cardDiv.append(shareButton);
+  cardDiv.append(likeButton);
   bigContainer.prepend(cardDiv);
 }
 
