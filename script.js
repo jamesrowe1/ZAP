@@ -24,7 +24,7 @@ $(document).ready(function () {
 //pull categories of data
 
 //share button
-var myShare = document.querySelectorAll(".share");
+// var myShare = document.querySelectorAll(".share");
 // myShare.addEventListener("click", function (event) {
 //   event.preventDefault();
 //   console.log("myShare");
@@ -257,7 +257,8 @@ function addCard(game) {
   var cardButtons = $("<div>");
   cardButtons.addClass("card-content card-buttons");
   var shareButton = $("<a>");
-  shareButton.addClass("btn-share waves-effect waves-light btn");
+  shareButton.addClass("btn-share waves-effect waves-light btn modal-trigger");
+  shareButton.attr("href", "#myModal");
   shareButton.text("Share");
 
   var likeButton = $("<button>");
