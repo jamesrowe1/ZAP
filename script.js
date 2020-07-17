@@ -245,7 +245,20 @@ function addCard() {
   bigContainer.prepend(cardDiv);
 
   $(".btn-like").on("click", function (event) {
+<<<<<<< HEAD
     alert("It works");
+=======
+    // $("this").toggleClass("clicked");
+    event.preventDefault();
+    //   var userLike = localStorage.setItem("click");
+    // localStorage["storedClicks"] = clicks
+    var userLike = JSON.parse(localStorage.getItem("click")) || [];
+    userLike.unshift(gameName);
+    localStorage.setItem("click", JSON.stringify(userLike));
+    console.log(userLike);
+
+    //localStorage.setItem("user", JSON.stringify(user));
+>>>>>>> 457ec899e7d3798cfb83c469af4ddc7b8986d653
   });
 
   $(".btn-share").on("click", function (event) {
