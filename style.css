@@ -4,7 +4,8 @@
 
 .card-title {
 	font-family: 'Monoton', cursive;
-	font font-size: 10em;
+	font-size: 5em;
+	color: #000 !important;
 }
 
 .logosize {
@@ -40,12 +41,8 @@ body {
   bottom: -50%;
   width: 200%;
   height: 200vh;
-<<<<<<< HEAD
-  background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
-=======
   background: transparent
     url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
->>>>>>> 77c0aa7b1bf36b621ac9cb06526fb5099646b163
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
