@@ -4,7 +4,15 @@
 
 .card-title {
 	font-family: 'Monoton', cursive;
-	font-size: 5em;
+	font-size: 8em;
+	color: #000 !important;
+}
+
+.card-esrb, 
+.card-price, 
+.card-store {
+	font-family: 'Monoton', cursive;
+	font-size: 4em;
 	color: #000 !important;
 }
 
