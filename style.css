@@ -33,6 +33,19 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
+.progress {
+  margin: auto;
+  margin-top: 50px;
+  width: 70%;
+  height: 15px;
+  display: none;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+  /* border: outset; */
+}
 .bg {
   position: fixed;
   top: -50%;
@@ -42,7 +55,11 @@ body {
   width: 200%;
   height: 200vh;
   background: transparent
+<<<<<<< HEAD
     url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+=======
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+>>>>>>> a067bdd647b5f7eb48b9081de2ec548a88ef5b94
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
@@ -121,7 +138,30 @@ html {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
 }
-
+.card .card-content {
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.btn {
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+h4 {
+  margin: 0;
+}
+h5 {
+  font-size: 1.75rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* weird that this is smaller than h4 and h5, but h3 are handed down by the api in the description */
+h3 {
+  font-size: 1.25rem;
+}
 .about-section {
   padding: 10px;
   text-align: center;
@@ -135,7 +175,7 @@ html {
 
 .container::after,
 .row::after {
-  content: '';
+  content: "";
   clear: both;
   display: table;
 }
