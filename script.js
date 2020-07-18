@@ -23,6 +23,8 @@ searchForm.on("submit", function (event) {
 
 function searchTime(event) {
   event.preventDefault();
+  //show the preloader until the card is ready to show
+  $("#preloader").show();
   var gameCardObj = {
     gameName: searchBar.val(),
     gameImageUrl: "",
@@ -198,7 +200,7 @@ function addCard(game) {
   //create cardTitle
   var cardTitle = $("<span>");
   cardTitle.addClass("card-title white-text");
-  cardTitle.html("<h3>" + game.gameName + "</h3>");
+  cardTitle.html("<h4>" + game.gameName + "</h4>");
 
   //create esrb rating div
   var cardESRB = $("<div>");
@@ -261,6 +263,9 @@ function addCard(game) {
     cardButtons.append(videoButton);
   }
   cardDiv.append(cardButtons);
+  //hide the preloader
+  $("#preloader").hide();
+  //append the card to the container
   bigContainer.prepend(cardDiv);
 }
 
