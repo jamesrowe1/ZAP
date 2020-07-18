@@ -59,33 +59,42 @@ function RawgAPI(gameCardObj) {
   $.ajax({
     url: "https://api.rawg.io/api/games/" + gameCardObj.gameRawg,
     method: "GET",
-  }).then(function (rawgResponse) {
-    console.log(rawgResponse);
-    rawgResponseGlobal = rawgResponse;
-    //esrb rating
-    if (rawgResponse.esrb_rating === null) {
-      gameCardObj.esrb = "No ESRB Rating";
-    } else {
-      gameCardObj.esrb = rawgResponse.esrb_rating.name;
-    }
-    if (rawgResponse.clip !== null) {
-      gameCardObj.clip = rawgResponse.clip.clip;
-    }
-    //this has <p> in it. let's try to use it to make the card clean
-    gameCardObj.gameDescription = rawgResponse.description;
-    //setting the image
-    gameCardObj.gameImageUrl = rawgResponse.background_image;
-    gameCardObj.gameName = rawgResponse.name;
-
-    //figure out of if game is f2p
-    for (var k = 0; k < rawgResponse.tags.length; k++) {
-      if (rawgResponse.tags[k].name === "Free to Play") {
-        gameCardObj.isF2P = true;
+    success: function (rawgResponse) {
+      console.log(rawgResponse);
+      rawgResponseGlobal = rawgResponse;
+      $("#gameNotFound").show;
+      //esrb rating
+      if (rawgResponse.esrb_rating === null) {
+        gameCardObj.esrb = "No ESRB Rating";
+      } else {
+        gameCardObj.esrb = rawgResponse.esrb_rating.name;
       }
-    }
+      if (rawgResponse.clip !== null) {
+        gameCardObj.clip = rawgResponse.clip.clip;
+      }
+      //this has <p> in it. let's try to use it to make the card clean
+      gameCardObj.gameDescription = rawgResponse.description;
+      //setting the image
+      gameCardObj.gameImageUrl = rawgResponse.background_image;
+      gameCardObj.gameName = rawgResponse.name;
 
-    //get array of games closely matching from cheapshark api
-    CheapSharkDealsAPI(gameCardObj);
+      //figure out of if game is f2p
+      for (var k = 0; k < rawgResponse.tags.length; k++) {
+        if (rawgResponse.tags[k].name === "Free to Play") {
+          gameCardObj.isF2P = true;
+        }
+      }
+
+      //get array of games closely matching from cheapshark api
+      CheapSharkDealsAPI(gameCardObj);
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      if (xhr.status === 404) {
+        $("#preloader").hide();
+        $("#gameNotFound").modal();
+        $("#gameNotFound").modal("open");
+      }
+    },
   });
 }
 
