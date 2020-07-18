@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.modal {
-  background-color: red;
-}
-
 .logosize {
   display: block;
   margin-left: auto;
@@ -233,7 +229,7 @@ h3 {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: red;
   color: white;
 }
 
@@ -243,7 +239,7 @@ h3 {
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: red;
   color: white;
 }
 
