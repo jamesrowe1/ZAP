@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.card-title {
+	font-family: 'Monoton', cursive;
+}
+
 .logosize {
   display: block;
   margin-left: auto;
