@@ -2,12 +2,6 @@
   position: relative;
 }
 
-.card-title {
-  font-family: "Monoton", cursive;
-  font-size: 8em;
-  color: #000 !important;
-}
-
 .logosize {
   display: block;
   margin-left: auto;
@@ -148,6 +142,7 @@ html {
 }
 h4 {
   margin: 0;
+  color: white;
 }
 h5 {
   font-size: 1.75rem;
