@@ -26,6 +26,7 @@ searchForm.on("submit", function (event) {
     gameDescription: "",
     price: "",
     storeName: "",
+    clip: "",
   };
 
   RawgAPI(gameCardObj);
@@ -55,6 +56,9 @@ function RawgAPI(gameCardObj) {
       gameCardObj.esrb = "No ESRB Rating";
     } else {
       gameCardObj.esrb = rawgResponse.esrb_rating.name;
+    }
+    if (rawgResponse.clip !== null) {
+      gameCardObj.clip = rawgResponse.clip.clip;
     }
     //this has <p> in it. let's try to use it to make the card clean
     gameCardObj.gameDescription = rawgResponse.description;
@@ -228,19 +232,25 @@ function addCard(game) {
   //video button
   var videoButton = $("<button>");
   videoButton.addClass("btn-like waves-effect waves-light btn");
-  likeButton.text("See a Preview");
+  videoButton.text("See a Preview");
+  videoButton.click(videoBtnClick);
+  videoButton.data("gameObj", JSON.stringify(game));
+
   //append everything
   cardImgDiv.append(cardTitle);
   cardImgDiv.append(gameImg);
 
   cardDiv.append(cardImgDiv);
-  //cardDiv.append(gameImg);
+
   cardDiv.append(cardDescription);
   cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
   cardButtons.append(shareButton);
   cardButtons.append(likeButton);
+  if (game.clip !== "") {
+    cardButtons.append(videoButton);
+  }
   cardDiv.append(cardButtons);
   bigContainer.prepend(cardDiv);
 }
@@ -254,9 +264,17 @@ function likeBtnClick(event) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   var gameObj = $(this).data("gameObj");
+  console.log(gameObj);
   gameObj = JSON.parse(gameObj);
-
+  console.log(gameObj);
   favorites.unshift(gameObj);
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+function videoBtnClick(event) {
+  console.log($(this).data);
+  var gameObj = $(this).data("gameObj");
+  gameObj = JSON.parse(gameObj);
+  window.open(gameObj.clip, "Clip of " + gameObj.gameName);
 }
