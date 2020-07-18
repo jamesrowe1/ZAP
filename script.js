@@ -200,6 +200,7 @@ function addCard(game) {
   cardDiv.addClass("card");
 
   //create card image div
+
   var cardImgDiv = $("<div>");
   cardImgDiv.addClass("card-image center #b71c1c red darken-4");
   var gameImg = $("<img>");
@@ -240,6 +241,7 @@ function addCard(game) {
   shareButton.attr("href", "#myModal");
   shareButton.click(shareBtnClick);
   shareButton.text("Share");
+  shareButton.data("gameObj", JSON.stringify(game));
 
   //like button
   var likeButton = $("<button>");
@@ -278,12 +280,18 @@ function addCard(game) {
 }
 
 function shareBtnClick(event) {
+  // modal pops up
   $("#myModal").modal();
+  event.preventDefault();
+  var gameObj = $(this).data("gameObj");
+  console.log(gameObj);
+  gameObj = JSON.parse(gameObj);
+  $("#imageLink").text(gameObj.gameImageUrl);
+  // make close (x) work
+  // close button?
 }
-//like button stores card to later populate separate section of favorites
 function likeBtnClick(event) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  //storing card/object to local data
   var gameObj = $(this).data("gameObj");
   console.log(gameObj);
   gameObj = JSON.parse(gameObj);
