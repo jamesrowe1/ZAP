@@ -3,17 +3,9 @@
 }
 
 .card-title {
-	font-family: 'Monoton', cursive;
-	font-size: 8em;
-	color: #000 !important;
-}
-
-.card-esrb, 
-.card-price, 
-.card-store {
-	font-family: 'Monoton', cursive;
-	font-size: 4em;
-	color: #000 !important;
+  font-family: 'Monoton', cursive;
+  font-size: 8em;
+  color: #000 !important;
 }
 
 .logosize {
@@ -235,11 +227,6 @@ html {
   }
 }
 
-<<<<<<< HEAD
-.aboutus {
-  background-color: to;
-}
-=======
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -257,4 +244,3 @@ html {
     opacity: 1;
   }
 }
->>>>>>> 77c0aa7b1bf36b621ac9cb06526fb5099646b163
