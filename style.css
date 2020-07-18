@@ -28,6 +28,14 @@ body {
   overflow-x: hidden;
 }
 
+.progress {
+  margin: auto;
+  margin-top: 50px;
+  width: 70%;
+  height: 15px;
+  display: none;
+}
+
 .material-icons:hover {
   cursor: pointer;
   /* border: outset; */
@@ -132,13 +140,17 @@ html {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-h3 {
+h4 {
   margin: 0;
 }
 h5 {
   font-size: 1.75rem;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+/* weird that this is smaller than h4 and h5, but h3 are handed down by the api in the description */
+h3 {
+  font-size: 1.25rem;
 }
 .about-section {
   padding: 50px;
