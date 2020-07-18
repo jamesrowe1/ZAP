@@ -11,48 +11,6 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
 });
 
-//user enters page
-//User Nav
-// if user click on the logo - button
-// button returns user to main page
-//searchbar
-// ==========================================================
-// DEPENDENCIES
-//
-
-// ==================================================
-//pull categories of data
-
-//share button
-// var myShare = document.querySelectorAll(".share");
-// myShare.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   console.log("myShare");
-//   alert("Done and waiting for James ajax stuff");
-// });
-// function shareGame() {
-//   // get most recent submission
-//   //unsure of gametitle
-
-//   //   remember to tak out the alert!!!
-
-// }
-//     on click
-//     pull from API
-//     pulls up lists according to User input
-
-//get specific details from rawg api
-// var gameName = "lego Batman";
-
-// var price = "$19.99";
-// var storeCheapID;
-// var gameDescription = "we are awesome coders";
-// var gameImageUrl;
-// var gameCheapID;
-// var esrb = "";
-// var storeName;
-// var isF2P = false;
-
 searchForm.on("submit", function (event) {
   event.preventDefault();
 
@@ -68,6 +26,7 @@ searchForm.on("submit", function (event) {
     gameDescription: "",
     price: "",
     storeName: "",
+    clip: "",
   };
 
   RawgAPI(gameCardObj);
@@ -90,13 +49,16 @@ function RawgAPI(gameCardObj) {
     url: "https://api.rawg.io/api/games/" + gameCardObj.gameRawg,
     method: "GET",
   }).then(function (rawgResponse) {
-    console.log(rawgResponse.description);
+    console.log(rawgResponse);
     rawgResponseGlobal = rawgResponse;
     //esrb rating
     if (rawgResponse.esrb_rating === null) {
       gameCardObj.esrb = "No ESRB Rating";
     } else {
       gameCardObj.esrb = rawgResponse.esrb_rating.name;
+    }
+    if (rawgResponse.clip !== null) {
+      gameCardObj.clip = rawgResponse.clip.clip;
     }
     //this has <p> in it. let's try to use it to make the card clean
     gameCardObj.gameDescription = rawgResponse.description;
@@ -110,7 +72,6 @@ function RawgAPI(gameCardObj) {
         gameCardObj.isF2P = true;
       }
     }
-    console.log(gameCardObj);
 
     //get array of games closely matching from cheapshark api
     CheapSharkDealsAPI(gameCardObj);
@@ -136,8 +97,7 @@ function CheapSharkDealsAPI(gameCardObj) {
   };
 
   $.ajax(settings).done(function (cheapResponseArr) {
-    console.log(cheapResponseArr);
-    console.log("hey" + rawgResponseGlobal);
+    console.log(rawgResponseGlobal);
     //if there are places to buy, or its F2P, set not to sale
     if (
       cheapResponseArr.length === 0 ||
@@ -172,7 +132,6 @@ function CheapSharkAPI(gameCardObj) {
   };
 
   $.ajax(settings).done(function (cheapResponseSingle) {
-    console.log(cheapResponseSingle);
     //set default here
     gameCardObj.price = cheapResponseSingle.deals[0].price;
     gameCardObj.storeCheapID = cheapResponseSingle.deals[0].storeID;
@@ -185,7 +144,6 @@ function CheapSharkAPI(gameCardObj) {
       }
     }
 
-    console.log(gameCardObj);
     //nested call to cheap as storeid needed from above
     //cheapshark stores
     CheapStoresAPI(gameCardObj);
@@ -256,30 +214,43 @@ function addCard(game) {
   //create buttons
   var cardButtons = $("<div>");
   cardButtons.addClass("card-content card-buttons");
+
+  //share button
   var shareButton = $("<a>");
   shareButton.addClass("btn-share waves-effect waves-light btn modal-trigger");
   shareButton.attr("href", "#myModal");
   shareButton.click(shareBtnClick);
   shareButton.text("Share");
 
+  //like button
   var likeButton = $("<button>");
   likeButton.addClass("btn-like waves-effect waves-light btn");
   likeButton.text("Like");
   likeButton.click(likeBtnClick);
   likeButton.data("gameObj", JSON.stringify(game));
 
+  //video button
+  var videoButton = $("<button>");
+  videoButton.addClass("btn-like waves-effect waves-light btn");
+  videoButton.text("See a Preview");
+  videoButton.click(videoBtnClick);
+  videoButton.data("gameObj", JSON.stringify(game));
+
   //append everything
   cardImgDiv.append(cardTitle);
   cardImgDiv.append(gameImg);
 
   cardDiv.append(cardImgDiv);
-  //cardDiv.append(gameImg);
+
   cardDiv.append(cardDescription);
   cardDiv.append(cardESRB);
   cardDiv.append(cardPrice);
   cardDiv.append(cardStore);
   cardButtons.append(shareButton);
   cardButtons.append(likeButton);
+  if (game.clip !== "") {
+    cardButtons.append(videoButton);
+  }
   cardDiv.append(cardButtons);
   bigContainer.prepend(cardDiv);
 }
@@ -291,28 +262,19 @@ function likeBtnClick(event) {
   alert("CLICKED");
 
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  // if (favorites === null) {
-  //   favorites = [];
-  // } else {
-  //   favorites = JSON.parse(favorites);
-  // }
 
-  // alert("HERE");
   var gameObj = $(this).data("gameObj");
+  console.log(gameObj);
   gameObj = JSON.parse(gameObj);
-
+  console.log(gameObj);
   favorites.unshift(gameObj);
 
-  // console.log(favorites);
-
   localStorage.setItem("favorites", JSON.stringify(favorites));
+}
 
-  //   var userLike = localStorage.setItem("click");
-  // localStorage["storedClicks"] = clicks
-  // var userLike = JSON.parse(localStorage.getItem("click")) || [];
-  // userLike.unshift(gameName);
-  // localStorage.setItem("click", JSON.stringify(userLike));
-  // console.log(userLike);
-
-  //localStorage.setItem("user", JSON.stringify(user));
+function videoBtnClick(event) {
+  console.log($(this).data);
+  var gameObj = $(this).data("gameObj");
+  gameObj = JSON.parse(gameObj);
+  window.open(gameObj.clip, "Clip of " + gameObj.gameName);
 }
