@@ -11,9 +11,18 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
 });
 
+//allow clicking icon to do something
+$("#searchIcon").on("click", function (event) {
+  event.preventDefault();
+  searchTime(event);
+});
 searchForm.on("submit", function (event) {
   event.preventDefault();
+  searchTime(event);
+});
 
+function searchTime(event) {
+  event.preventDefault();
   var gameCardObj = {
     gameName: searchBar.val(),
     gameImageUrl: "",
@@ -28,9 +37,9 @@ searchForm.on("submit", function (event) {
     storeName: "",
     clip: "",
   };
-
+  searchForm.trigger("reset");
   RawgAPI(gameCardObj);
-});
+}
 
 function RawgAPI(gameCardObj) {
   //all the ajax stuff here
@@ -259,8 +268,6 @@ function shareBtnClick(event) {
   $("#myModal").modal();
 }
 function likeBtnClick(event) {
-  alert("CLICKED");
-
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   var gameObj = $(this).data("gameObj");
