@@ -241,6 +241,7 @@ function addCard (game) {
   shareButton.attr('href', '#myModal')
   shareButton.click(shareBtnClick)
   shareButton.text('Share')
+  shareButton.data('gameObj', JSON.stringify(game))
 
   //like button
   var likeButton = $('<button>')
@@ -282,10 +283,10 @@ function shareBtnClick (event) {
   // modal pops up
   $('#myModal').modal()
   event.preventDefault()
-  $('#imageLink')
   var gameObj = $(this).data('gameObj')
   console.log(gameObj)
   gameObj = JSON.parse(gameObj)
+  $('#imageLink').text(gameObj.gameImageUrl)
   // make close (x) work
   // close button?
 }
