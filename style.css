@@ -49,6 +49,22 @@ body {
 	/* border: outset; */
 }
 .bg {
+<<<<<<< HEAD
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent
+    url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation 0.2s infinite;
+  opacity: 0.9;
+  visibility: visible;
+  z-index: -1;
+=======
 	position: fixed;
 	top: -50%;
 	left: -50%;
@@ -62,6 +78,7 @@ body {
 	opacity: 0.9;
 	visibility: visible;
 	z-index: -1;
+>>>>>>> 48d00dc6f069d48813f311113e32df7bf2adf963
 }
 @keyframes bg-animation {
 	0% {
@@ -173,9 +190,15 @@ h3 {
 
 .container::after,
 .row::after {
+<<<<<<< HEAD
+  content: '';
+  clear: both;
+  display: table;
+=======
 	content: "";
 	clear: both;
 	display: table;
+>>>>>>> 48d00dc6f069d48813f311113e32df7bf2adf963
 }
 
 .title {
