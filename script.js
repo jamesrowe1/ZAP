@@ -279,8 +279,18 @@ function likeBtnClick(event) {
   console.log(gameObj);
   gameObj = JSON.parse(gameObj);
   console.log(gameObj);
-  favorites.unshift(gameObj);
-
+  //check to make sure the object is not already in the like array
+  var gameObjCheck;
+  gameObjCheck = favorites.filter((game) => {
+    if (game.gameName === gameObj.gameName) {
+      return true;
+    }
+  });
+  if (gameObjCheck.length === 0) {
+    //add the new like into favorites if it is not already there
+    favorites.unshift(gameObj);
+  } else {
+  }
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
