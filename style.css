@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.card-title {
+  font-family: "Monoton", cursive;
+  font-size: 8em;
+  color: #000 !important;
+}
+
 .logosize {
   display: block;
   margin-left: auto;
@@ -153,14 +159,14 @@ h3 {
   font-size: 1.25rem;
 }
 .about-section {
-  padding: 50px;
+  padding: 10px;
   text-align: center;
   background-color: #474e5d;
   color: white;
 }
 
 .container {
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
 .container::after,
