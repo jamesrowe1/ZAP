@@ -282,21 +282,15 @@ function shareBtnClick (event) {
   // modal pops up
   $('#myModal').modal()
   event.preventDefault()
-  var modalWindow = $('<div>')
-  modalWindow.addClass('card')
-  modalWindow.html('<p>I found out all this from Zap App!' + game.storeName)
-  // add title to modal window
-  // add info to modal windnow
+  $('#imageLink')
+  var gameObj = $(this).data('gameObj')
+  console.log(gameObj)
+  gameObj = JSON.parse(gameObj)
   // make close (x) work
   // close button?
-  $(myModal)
-    .prepend('body')
-    .modal()
 }
 function likeBtnClick (event) {
   var favorites = JSON.parse(localStorage.getItem('favorites')) || []
-  modal.text('Share this game with your friends!')
-  modal.text('Share this game with your friends!')
   var gameObj = $(this).data('gameObj')
   console.log(gameObj)
   gameObj = JSON.parse(gameObj)
