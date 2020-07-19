@@ -317,3 +317,10 @@ function videoBtnClick(event) {
   gameObj = JSON.parse(gameObj);
   window.open(gameObj.clip, "Clip of " + gameObj.gameName);
 }
+//this function links to likes page HTML which takes the stored data (likes) and populates page
+function likePopulator() {
+  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  favorites.forEach((element) => {
+    addCard(element);
+  });
+}
