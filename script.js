@@ -6,6 +6,7 @@ var bigContainer = $("#bigContainer");
 
 //initialize
 var rawgResponseGlobal;
+var allGamesArr = [];
 
 $(document).ready(function () {
   $(".sidenav").sidenav();
@@ -47,9 +48,12 @@ function RawgAPI(gameCardObj) {
   //all the ajax stuff here
   //Rawg API has weird naming conventions
   gameCardObj.gameRawg = gameCardObj.gameName
+    .replace("'", "")
     .replace(/[^a-zA-Z0-9]/g, "-")
+    .replace(/-+/g, "-")
     .toLowerCase();
-  gameCardObj.gameRawg.replace(/-{2,}/g, "-");
+  //gameCardObj.gameRawg = gameCardObj.gameRawg.replace(/-+/g, "-");
+
   //CheapShark API also has weird naming conventions
   gameCardObj.gameCheap = gameCardObj.gameName
     .replace(/[^a-zA-Z0-9]/g, "")
@@ -61,32 +65,39 @@ function RawgAPI(gameCardObj) {
     method: "GET",
     success: function (rawgResponse) {
       console.log(rawgResponse);
-      rawgResponseGlobal = rawgResponse;
-      $("#gameNotFound").show;
-      //esrb rating
-      if (rawgResponse.esrb_rating === null) {
-        gameCardObj.esrb = "No ESRB Rating";
+      //make sure its not a redirect
+      if (rawgResponse.hasOwnProperty("redirect")) {
+        gameCardObj.gameName = rawgResponse.slug;
+        RawgAPI(gameCardObj);
       } else {
-        gameCardObj.esrb = rawgResponse.esrb_rating.name;
-      }
-      if (rawgResponse.clip !== null) {
-        gameCardObj.clip = rawgResponse.clip.clip;
-      }
-      //this has <p> in it. let's try to use it to make the card clean
-      gameCardObj.gameDescription = rawgResponse.description;
-      //setting the image
-      gameCardObj.gameImageUrl = rawgResponse.background_image;
-      gameCardObj.gameName = rawgResponse.name;
+        rawgResponseGlobal = rawgResponse;
 
-      //figure out of if game is f2p
-      for (var k = 0; k < rawgResponse.tags.length; k++) {
-        if (rawgResponse.tags[k].name === "Free to Play") {
-          gameCardObj.isF2P = true;
+        $("#gameNotFound").show;
+        //esrb rating
+        if (rawgResponse.esrb_rating === null) {
+          gameCardObj.esrb = "No ESRB Rating";
+        } else {
+          gameCardObj.esrb = rawgResponse.esrb_rating.name;
         }
-      }
+        if (rawgResponse.clip !== null) {
+          gameCardObj.clip = rawgResponse.clip.clip;
+        }
+        //this has <p> in it. let's try to use it to make the card clean
+        gameCardObj.gameDescription = rawgResponse.description;
+        //setting the image
+        gameCardObj.gameImageUrl = rawgResponse.background_image;
+        gameCardObj.gameName = rawgResponse.name;
 
-      //get array of games closely matching from cheapshark api
-      CheapSharkDealsAPI(gameCardObj);
+        //figure out of if game is f2p
+        for (var k = 0; k < rawgResponse.tags.length; k++) {
+          if (rawgResponse.tags[k].name === "Free to Play") {
+            gameCardObj.isF2P = true;
+          }
+        }
+
+        //get array of games closely matching from cheapshark api
+        CheapSharkDealsAPI(gameCardObj);
+      }
     },
     error: function (xhr, ajaxOptions, thrownError) {
       if (xhr.status === 404) {
@@ -324,3 +335,434 @@ function likePopulator() {
     addCard(element);
   });
 }
+
+$("#getAllGames").on("click", function () {
+  getAllGames("https://api.rawg.io/api/games?page_size=40", 0);
+});
+
+function getAllGames(url, timesrun) {
+  $.ajax({
+    url: "https://api.rawg.io/api/games?page_size=40",
+    method: "GET",
+    success: function (allGamesPage) {
+      console.log(allGamesPage);
+      allGamesPage.results.forEach((game) => {
+        allGamesArr.push('"' + game.name + '"' + ": null");
+      });
+      console.log(allGamesArr);
+      timesrun++;
+      if (timesrun < 10) {
+        getAllGames(allGamesPage.next, timesrun);
+      }
+      $("#stuff").text(allGamesArr);
+    },
+    error: function (xhr, ajaxOptions, thrownError) {},
+  });
+}
+
+$(document).ready(function () {
+  $("input.autocomplete").autocomplete({
+    data: {
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+      "Grand Theft Auto V": null,
+      "Portal 2": null,
+      "The Witcher 3: Wild Hunt": null,
+      "Tomb Raider (2013)": null,
+      "The Elder Scrolls V: Skyrim": null,
+      "Left 4 Dead 2": null,
+      "Borderlands 2": null,
+      "BioShock Infinite": null,
+      Portal: null,
+      "Life is Strange": null,
+      "Counter-Strike: Global Offensive": null,
+      Limbo: null,
+      BioShock: null,
+      "Half-Life 2": null,
+      "Team Fortress 2": null,
+      "Red Dead Redemption 2": null,
+      "DOOM (2016)": null,
+      "PAYDAY 2": null,
+      "Fallout 4": null,
+      "Grand Theft Auto IV": null,
+      "Dota 2": null,
+      "God of War": null,
+      "The Walking Dead: Season 1": null,
+      "Rocket League": null,
+      "METAL GEAR SOLID V: THE PHANTOM PAIN": null,
+      "Destiny 2": null,
+      "Half-Life 2: Lost Coast": null,
+      Warframe: null,
+      "Metro 2033": null,
+      "Horizon Zero Dawn": null,
+      "The Witcher 2: Assassins of Kings Enhanced Edition": null,
+      Terraria: null,
+      "Rise of the Tomb Raider": null,
+      "Middle-earth: Shadow of Mordor": null,
+      "Half-Life 2: Episode One": null,
+      HITMAN: null,
+      "Spec Ops: The Line": null,
+      "Half-Life 2: Episode Two": null,
+      "Batman: Arkham Knight": null,
+      "BioShock 2": null,
+    },
+  });
+});
