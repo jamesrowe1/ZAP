@@ -13,12 +13,39 @@
   height: 150px;
 }
 
+#nav-elements-homepage {
+  padding: 0;
+}
+
+#nav {
+  text-align: justify;
+  min-width: 500px;
+}
+
+#nav:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+#nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
 .nav-wrapper {
   text-align: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.homePageLink {
+  color: red;
 }
 
 a {
-  color: lightblue;
+  color: red;
 }
 
 .editLink {
@@ -57,7 +84,7 @@ body {
   width: 200%;
   height: 200vh;
   background: transparent
-    url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
@@ -175,7 +202,7 @@ h3 {
 
 .container::after,
 .row::after {
-  content: '';
+  content: "";
   clear: both;
   display: table;
 }
