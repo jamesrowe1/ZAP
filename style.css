@@ -13,12 +13,23 @@
   height: 150px;
 }
 
+#nav-mobile {
+  text-align: justify;
+  min-width: 500px;
+}
+
+#nav-mobile:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
 .nav-wrapper {
   text-align: center;
   background-color: red;
 }
 
-.homeLink {
+.homePageLink {
   color: red;
 }
 
