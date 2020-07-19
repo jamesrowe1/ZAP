@@ -301,6 +301,7 @@ function shareBtnClick(event) {
   // make close (x) work
   // close button?
 }
+//like button function which is later linked to the populator function- passes an object
 function likeBtnClick(event) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   var gameObj = $(this).data("gameObj");
@@ -321,7 +322,7 @@ function likeBtnClick(event) {
   }
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }
-
+//this funciton is for the video preview which opens a new window and autoplays the clip
 function videoBtnClick(event) {
   console.log($(this).data);
   var gameObj = $(this).data("gameObj");
@@ -359,7 +360,7 @@ function getAllGames(url, timesrun) {
     error: function (xhr, ajaxOptions, thrownError) {},
   });
 }
-
+//auto complete function (awesome block of code)
 $(document).ready(function () {
   $("input.autocomplete").autocomplete({
     data: {
