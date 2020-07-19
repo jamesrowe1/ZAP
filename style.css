@@ -13,12 +13,39 @@
   height: 150px;
 }
 
+#nav-elements-homepage {
+  padding: 0;
+}
+
+#nav {
+  text-align: justify;
+  min-width: 500px;
+}
+
+#nav:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+#nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
 .nav-wrapper {
   text-align: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.homePageLink {
+  color: red;
 }
 
 a {
-  color: lightblue;
+  color: red;
 }
 
 .editLink {
@@ -147,7 +174,7 @@ html {
   margin-right: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: red;
+  color: red;
 }
 h4 {
   margin: 0;
