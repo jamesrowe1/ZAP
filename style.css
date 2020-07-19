@@ -57,7 +57,7 @@ body {
   width: 200%;
   height: 200vh;
   background: transparent
-    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+    url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
@@ -174,7 +174,7 @@ h3 {
 
 .container::after,
 .row::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -229,7 +229,7 @@ h3 {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: red;
   color: white;
 }
 
@@ -239,7 +239,7 @@ h3 {
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: red;
   color: white;
 }
 
