@@ -14,7 +14,6 @@
   height: 250px;
   position: relative;
   top: -90px;
-
 }
 
 #nav-elements-homepage {
@@ -55,7 +54,7 @@ nav .input-field label {
 
 a {
   color: red;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .editLink {
@@ -94,7 +93,8 @@ body {
   bottom: -50%;
   width: 200%;
   height: 200vh;
-  background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background: transparent
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
   background-repeat: repeat;
   animation: bg-animation 0.2s infinite;
   opacity: 0.9;
