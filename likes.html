@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- like button -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!-- like button -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="Assets/favicon.ico" />
+    <title>Zap</title>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon" href="Assets/favicon.ico" />
-  <title>Zap</title>
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-</head>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
   <body>
-<header>
+    <header>
+      <h1>
+        <img
+          src="Assets/ZAP Logo copy.png"
+          width="400"
+          height="350"
+          alt="zap logo"
+          class="logosize"
+          id="logo"
+        />
+      </h1>
 
-    <h1>
-      <img src="Assets/ZAP Logo copy.png" width="400" height="350" alt="zap logo" class="logosize" id="logo" />
-    </h1>
+      <div class="nav-wrapper">
+        <div class="container">
+          <ul id="nav">
+            <li><a class="homePageLink" href="index.html">Home</a></li>
+            <li><a class="homePageLink" href="aboutus.html">About Us</a></li>
+            <li><a class="homePageLink" href="contact.html">Contact Us</a></li>
+            <li><a class="homePageLink" href="likes.html">Your Likes</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-
-  <div class="nav-wrapper">
-
-    <div class="container">
-      <ul id="nav">
-        <li><a class="homePageLink" href="index.html">Home</a></li>
-        <li><a class="homePageLink" href="aboutus.html">About Us</a></li>
-        <li><a class="homePageLink" href="contact.html">Contact Us</a></li>
-        <li><a class="homePageLink" href="likes.html">Your Likes</a></li>
-      </ul>
-    </div>
-  </header>
-
-  </div>
-
-
+    <div class="container" id="bigContainer"></div>
 
     YOUR LIKES HERE
     <script>
@@ -50,41 +61,7 @@
         likePopulator();
       });
     </script>
-    <div class="cardObjt">
-      <h1>My Liked Games</h1>
-    </div>
-    <script>
-      //on click function
-      //create container
-      //append card div
-      // var cardDiv = $("<div>");
-      // cardDiv.addClass("card");
 
-      //create card image div
-
-      // var cardImgDiv = $("<div>");
-      // cardImgDiv.addClass("card-image center #b71c1c red darken-4");
-      // var gameImg = $("<img>");
-      // //onclick function that game object is prepended in a container on the likes page
-
-      // $(".likeBtn").on("click", function (event) {
-      //   event.preventDefault();
-      //   $(".gameObj").prepend;
-      //   var likedImg = $("<div>");
-      //   likedImg.addClass("likedImage");
-      //   likedImg.click(likeBtnClick);
-      //   likedImg.prepend(gameCardObj);
-
-      //   function likePopulator(event) {}
-      // });
-
-      /*  $(document).attr("src", game.gameImageUrl);
-       */
-
-      $(document).ready(function () {
-        likePopulator();
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
-
 </html>
