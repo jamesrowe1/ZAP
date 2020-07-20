@@ -1,60 +1,15 @@
 body {
-<<<<<<< HEAD
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-
-html {
-  box-sizing: border-box;
-=======
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 }
 
 html {
 	box-sizing: border-box;
->>>>>>> cdb9ad78c954849b527bf0f56bfa2486d9ffffe7
 }
 
 *,
 *:before,
 *:after {
-<<<<<<< HEAD
-  box-sizing: inherit;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-.card .card-content {
-  margin: 0;
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: red;
-  color: black;
-}
-
-.container {
-  padding: 0 16px;
-=======
 	box-sizing: inherit;
 }
 
@@ -72,6 +27,7 @@ h3 {
 
 h2 {
 	color: white;
+	font-size: 30px;
 }
 
 h3 {
@@ -93,62 +49,8 @@ h3 {
 
 .container {
 	padding: 0 16px;
->>>>>>> cdb9ad78c954849b527bf0f56bfa2486d9ffffe7
-}
-
-.container::after,
-.row::after {
-<<<<<<< HEAD
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: black;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-
-.aboutus {
-  background-color: black;
-}
-
-.card {
-  background-color: red;
-}
-
-.nav-wrapper {
-  background-color: black;
-}
-
-h2 {
-  color: white;
-=======
-	content: "";
-	clear: both;
-	display: table;
+	width: 25%%;
+	height: 25%;
 }
 
 .title {
@@ -188,5 +90,4 @@ h2 {
 
 .nav-wrapper {
 	background-color: black;
->>>>>>> cdb9ad78c954849b527bf0f56bfa2486d9ffffe7
 }
