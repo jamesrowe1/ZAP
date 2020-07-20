@@ -10,7 +10,6 @@ var allGamesArr = [];
 
 $(document).ready(function () {
   $(".modal").modal();
-  $(".modal").dismissible = true;
 });
 
 //allow clicking icon to do something
