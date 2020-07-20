@@ -21,11 +21,17 @@ searchForm.on("submit", function (event) {
   event.preventDefault();
   searchTime(event);
 });
+//show the preloader until the card is ready to show
+
+
+
 
 function searchTime() {
   //show the preloader until the card is ready to show
+
   $("#preloader").show();
   var gameCardObj = {
+    //this game card object is similiar to the "coin" and is put into the functions
     gameName: searchBar.val(),
     gameImageUrl: "",
     gameRawg: "",
@@ -108,9 +114,7 @@ function RawgAPI(gameCardObj) {
   });
 }
 
-/**
- * This API is to get the best deal
- */
+//This API is to get the best deal on games (updates so prices/availability will vary)
 function CheapSharkDealsAPI(gameCardObj) {
   var settings = {
     async: true,
@@ -339,7 +343,7 @@ function likePopulator() {
 $("#getAllGames").on("click", function () {
   getAllGames("https://api.rawg.io/api/games?page_size=40", 0);
 });
-
+//the load bar function
 function getAllGames(url, timesrun) {
   $.ajax({
     url: "https://api.rawg.io/api/games?page_size=40",
