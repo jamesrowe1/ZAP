@@ -8,9 +8,7 @@ var bigContainer = $("#bigContainer");
 var rawgResponseGlobal;
 var allGamesArr = [];
 
-$(document).ready(function () {
-  $(".sidenav").sidenav();
-});
+$(document).ready(function () {});
 
 //allow clicking icon to do something
 $("#searchIcon").on("click", function (event) {
@@ -22,9 +20,6 @@ searchForm.on("submit", function (event) {
   searchTime(event);
 });
 //show the preloader until the card is ready to show
-
-
-
 
 function searchTime() {
   //show the preloader until the card is ready to show
@@ -295,8 +290,9 @@ function addCard(game) {
 
 function shareBtnClick(event) {
   // modal pops up
-  $("#myModal").modal();
   event.preventDefault();
+  $("#myModal").modal();
+
   var gameObj = $(this).data("gameObj");
   console.log(gameObj);
   gameObj = JSON.parse(gameObj);
