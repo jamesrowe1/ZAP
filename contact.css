@@ -45,7 +45,6 @@ input[type="submit"]:hover {
   border-radius: 5px;
   background-color: gray;
   padding: 20px;
-  width: 50%;
   margin: auto;
 }
 
@@ -60,4 +59,10 @@ input[type="submit"]:hover {
 
 .nav-wrapper {
   background-color: black;
+}
+
+@media only screen and (min-width: 600px) {
+  .containers {
+    width: 50%;
+  }
 }
