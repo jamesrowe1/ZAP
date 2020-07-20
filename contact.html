@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <title>Zap Contact Us</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="contact.css">
 </head>
 
@@ -20,7 +20,7 @@
     <h1>
       <img src="Assets/output-onlinepngtools.png" width="400" height="350" alt="zap logo" class="logosize" id="logo" />
     </h1>
-    <div>
+    <div class="container">
       <ul id="nav">
         <li><a class="homePageLink" href="index.html">Home</a></li>
         <li><a class="homePageLink" href="aboutus.html">About Us</a></li>
@@ -29,9 +29,9 @@
       </ul>
     </div>
   </header>
-  
+
   <br>
-  <div class="container">
+  <div class="containers">
     <form action="action_page.php">
 
       <label for="fname">First Name</label>
@@ -40,13 +40,7 @@
       <label for="lname">Last Name</label>
       <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-      <label for="country">Country</label>
-      <select id="country" name="country">
-        <option value="australia">USA</option>
-        <option value="canada">Canada</option>
-        <option value="usa">Australia</option>
-        <option value="usa">United Kingdom</option>
-      </select>
+
 
       <label for="subject">Subject</label>
       <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>

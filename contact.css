@@ -41,16 +41,21 @@ input[type=submit]:hover {
 }
 
 /* Add a background color and some padding around the form */
-.container {
+.containers {
 	border-radius: 5px;
 	background-color: gray;
 	padding: 20px;
+}
+
+.container {
+	padding: 0 10px;
 }
 
 .glow {
 	border-radius: 5px;
 	padding: 20px;
 }
+
 .nav-wrapper {
 	background-color: black;
 }
