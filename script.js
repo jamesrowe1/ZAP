@@ -8,7 +8,10 @@ var bigContainer = $("#bigContainer");
 var rawgResponseGlobal;
 var allGamesArr = [];
 
-$(document).ready(function () {});
+$(document).ready(function () {
+  $(".modal").modal();
+  $(".modal").dismissible = true;
+});
 
 //allow clicking icon to do something
 $("#searchIcon").on("click", function (event) {
@@ -290,9 +293,7 @@ function addCard(game) {
 
 function shareBtnClick(event) {
   // modal pops up
-  event.preventDefault();
   $("#myModal").modal();
-
   var gameObj = $(this).data("gameObj");
   console.log(gameObj);
   gameObj = JSON.parse(gameObj);
@@ -300,6 +301,7 @@ function shareBtnClick(event) {
   // make close (x) work
   // close button?
 }
+
 //like button function which is later linked to the populator function- passes an object
 function likeBtnClick(event) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
