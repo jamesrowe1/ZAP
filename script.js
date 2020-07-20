@@ -23,8 +23,12 @@ searchForm.on("submit", function (event) {
 });
 //show the preloader until the card is ready to show
 
-function searchTime(event) {
-  event.preventDefault();
+
+
+
+function searchTime() {
+  //show the preloader until the card is ready to show
+
   $("#preloader").show();
   var gameCardObj = {
     //this game card object is similiar to the "coin" and is put into the functions
@@ -763,6 +767,9 @@ $(document).ready(function () {
       "Half-Life 2: Episode Two": null,
       "Batman: Arkham Knight": null,
       "BioShock 2": null,
+    },
+    onAutocomplete: function (data) {
+      searchTime();
     },
   });
 });

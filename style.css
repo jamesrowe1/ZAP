@@ -8,9 +8,12 @@
   margin-right: auto;
   width: 50%;
 }
+
 #logo {
-  width: 200px;
-  height: 150px;
+  width: 300px;
+  height: 250px;
+  position: relative;
+  top: -90px;
 }
 
 #nav-elements-homepage {
@@ -40,12 +43,21 @@
   padding: 0;
 }
 
+nav .input-field label {
+  top: -10px;
+  left: 10px;
+}
+
 .homePageLink {
   color: red;
 }
 
 a {
   color: red;
+  font-size: 1.25rem;
+}
+#nav li {
+  margin: 5px;
 }
 
 .editLink {
@@ -75,6 +87,7 @@ body {
   cursor: pointer;
   /* border: outset; */
 }
+
 .bg {
   position: fixed;
   top: -50%;
@@ -91,6 +104,7 @@ body {
   visibility: visible;
   z-index: -1;
 }
+
 @keyframes bg-animation {
   0% {
     transform: translate(0, 0);
@@ -163,6 +177,7 @@ html {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
 }
+
 .card .card-content {
   margin: 0;
   padding-top: 12px;
@@ -170,25 +185,29 @@ html {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
 .btn {
   margin-right: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
-  color: red;
 }
+
 h4 {
   margin: 0;
   color: white;
 }
+
 h5 {
   font-size: 1.75rem;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 /* weird that this is smaller than h4 and h5, but h3 are handed down by the api in the description */
 h3 {
   font-size: 1.25rem;
 }
+
 .about-section {
   padding: 10px;
   text-align: center;
@@ -210,19 +229,29 @@ h3 {
 .title {
   color: grey;
 }
+
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  -webkit-animation-name: fadeIn; /* Fade in the background */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  -webkit-animation-name: fadeIn;
+  /* Fade in the background */
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
   animation-duration: 0.4s;
@@ -277,6 +306,7 @@ h3 {
     bottom: -300px;
     opacity: 0;
   }
+
   to {
     bottom: 0;
     opacity: 1;
@@ -288,6 +318,7 @@ h3 {
     bottom: -300px;
     opacity: 0;
   }
+
   to {
     bottom: 0;
     opacity: 1;
@@ -298,6 +329,7 @@ h3 {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -307,6 +339,7 @@ h3 {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
