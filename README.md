@@ -47,7 +47,7 @@ For any issues contact any of the listed fabulous team members.
 ## Acknowledgments
 
 - Ben Wright
-- Justin Simero
+- Justin Pinero
 - Tutor(s):
 - Ben Benson
 - Wilson Linares
